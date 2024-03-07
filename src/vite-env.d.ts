@@ -1,9 +1,10 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
+  // 项目名称
   VITE_APP_NAME: string;
-  VITE_ENV_NAME: "development" | "staging" | "production";
-  VITE_ENV: "dev" | "staging" | "";
+  // 当前环境 开发：dev 测试：test 生产 ""
+  VITE_ENV: "dev" | "test" | "";
+  // api 接口地址
   VITE_SERVICE_URL: string;
-  VITE_PUBLIC_KEY: string;
 }

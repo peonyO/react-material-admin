@@ -2,7 +2,7 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { theme } from "./config";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 const MuiTheme: React.FC<Props> = ({ children }) => {
