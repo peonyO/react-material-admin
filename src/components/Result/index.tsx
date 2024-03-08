@@ -12,15 +12,15 @@ interface Props {
 const Result: React.FC<Props> = ({ components, title, subTitle, imageSrc, extra }) => {
   return (
     <Container component={components || "main"}>
-      <Stack className="max-w-[400px] text-center mx-auto">
+      <Stack textAlign="center" maxWidth="400px" mx="auto">
         <Box>
-          <Typography component={"h3"} className="font-bold text-[28px] text-[#333] mb-[16px]">
+          <Typography component={"h3"} fontWeight="bold" fontSize="28px" color="#333" mb="16px">
             {title}
           </Typography>
-          <Typography component={"p"} className="text-[16px] leading-[1.5] text-[#637381]">
+          <Typography component={"p"} fontSize="16px" lineHeight="1.5" color="#637381">
             {subTitle}
           </Typography>
-          <Typography component={"img"} src={imageSrc} className="w-[400px] mx-auto my-[40px]"></Typography>
+          <Typography component={"img"} src={imageSrc} width="400px" mx="auto" my="40px"></Typography>
           {extra}
         </Box>
       </Stack>

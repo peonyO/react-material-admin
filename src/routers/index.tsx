@@ -54,12 +54,13 @@ const RouterProvider: React.FC = () => {
       return <Navigate to={"/404"} replace />;
     }
   };
+  console.log(routeAuth);
 
   // 循环获取路由
   const routerConfig = (routeList: RouteObjectType[]): React.ReactNode[] => {
     return routeList.map((route, index) => {
       return (
-        <Route key={index} path={route.path ? route.path : "/"} element={routeAuth(route)}>
+        <Route key={index} path={route.path ? route.path : "/"} element={route.element}>
           {/* 递归获取路由 */}
           {route.children ? routerConfig(route.children) : <></>}
         </Route>

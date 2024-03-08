@@ -1,5 +1,3 @@
-import "./styles.css";
-
 const RouteLoading: React.FC = () => {
   return <div className="loader"></div>;
 };
