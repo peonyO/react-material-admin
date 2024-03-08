@@ -8,6 +8,22 @@ export const theme = createTheme({
       contrastText: "#fff"
     }
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px"
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px"
+        }
+      }
+    }
+  },
   typography: {
     fontFamily: "sans, sans-serif"
   }

@@ -1,4 +1,4 @@
-import { InternalAxiosRequestConfig, Method } from "axios";
+import { InternalAxiosRequestConfig } from "axios";
 
 export interface ExtendsAxiosRequestConfig {
   loading?: boolean;
@@ -8,12 +8,11 @@ export interface ExtendsAxiosRequestConfig {
 
 export type CustomAxiosRequestConfig = ExtendsAxiosRequestConfig & InternalAxiosRequestConfig;
 
-export interface RequestConfig extends ExtendsAxiosRequestConfig {
+export interface RequestConfig {
   url?: string;
   path?: string;
   params?: any;
   data?: any;
-  method?: Method;
 }
 
 export interface ServiceResponse<R> {

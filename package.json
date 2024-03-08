@@ -9,12 +9,13 @@
     "lint:lint-staged": "lint-staged",
     "preview": "vite preview",
     "prepare": "husky",
-    "commit": "git add -A && git-cz && git pull && git push"
+    "commit": "git add -A && git pull && git-cz  && git push"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.12",
+    "@mui/lab": "5.0.0-alpha.167",
     "@mui/material": "^5.15.12",
     "@tanstack/react-query": "^5.25.0",
     "axios": "^1.6.7",

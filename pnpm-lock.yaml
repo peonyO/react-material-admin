@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@emotion/react':
@@ -10,6 +14,9 @@ dependencies:
   '@mui/icons-material':
     specifier: ^5.15.12
     version: 5.15.12(@mui/material@5.15.12)(@types/react@18.2.56)(react@18.2.0)
+  '@mui/lab':
+    specifier: 5.0.0-alpha.167
+    version: 5.0.0-alpha.167(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.12)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
   '@mui/material':
     specifier: ^5.15.12
     version: 5.15.12(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
@@ -772,6 +779,39 @@ packages:
       '@mui/material': 5.15.12(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.56
       react: 18.2.0
+    dev: false
+
+  /@mui/lab@5.0.0-alpha.167(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.12)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BNQJ7fBBvL68WGVnzAhbtTmabSuJDXaILr9dz/3RNK4TgGXPgWCAr7qtJeUdc4p1t7c4Z1ifG8UwgqD+5hzMNg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@emotion/react': ^11.5.0
+      '@emotion/styled': ^11.3.0
+      '@mui/material': '>=5.15.0'
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/react':
+        optional: true
+      '@emotion/styled':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.24.0
+      '@emotion/react': 11.11.4(@types/react@18.2.56)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.4)(@types/react@18.2.56)(react@18.2.0)
+      '@mui/base': 5.0.0-beta.38(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/material': 5.15.12(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/system': 5.15.12(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.56)(react@18.2.0)
+      '@mui/types': 7.2.13(@types/react@18.2.56)
+      '@mui/utils': 5.15.12(@types/react@18.2.56)(react@18.2.0)
+      '@types/react': 18.2.56
+      clsx: 2.1.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@mui/material@5.15.12(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0):

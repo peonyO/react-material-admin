@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
-import SettingIcon from "@mui/icons-material/Settings";
+import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import Logo from "@/assets/react.svg";
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
           </Link>
         </Box>
         <IconButton>
-          <SettingIcon />
+          <SettingsTwoToneIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

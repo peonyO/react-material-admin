@@ -3,7 +3,7 @@ import { Backdrop, CircularProgress } from "@mui/material";
 const FullScreenLoading: React.FC = () => {
   return (
     <Backdrop open={true}>
-      <CircularProgress />
+      <CircularProgress sx={{ color: "#00a76f" }} />
     </Backdrop>
   );
 };
