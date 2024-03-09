@@ -1,11 +1,16 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 import { enqueueSnackbar } from "notistack";
 import { ResultEnum } from "@/enums/httpEnum";
-import { CustomAxiosRequestConfig, ExtendsAxiosRequestConfig, RequestConfig } from "../interface/requestHttp";
+import { getStorage, removeStorage } from "@/utils";
 import { AxiosCanceler } from "./helpers/axiosCancel";
 import { showFullScreenLoading, tryHideFullScreenLoading } from "./helpers/loading";
-import { getStorage, removeStorage } from "@/utils";
-// import { checkStatus } from "./helpers/checkStatus";
+import { checkStatus } from "./helpers/checkStatus";
+import {
+  CustomAxiosRequestConfig,
+  CustomAxiosResponse,
+  ExtendsAxiosRequestConfig,
+  RequestConfig
+} from "../interface/requestHttp";
 
 const axiosCanceler = new AxiosCanceler();
 
@@ -43,7 +48,7 @@ class RequestHttp {
      *  The server returns the information -> [intercept unified processing] -> the client JS gets the information
      */
     this.service.interceptors.response.use(
-      (response: AxiosResponse) => {
+      (response: CustomAxiosResponse) => {
         const { data, config } = response;
         axiosCanceler.removePending(config);
         tryHideFullScreenLoading();
@@ -51,53 +56,55 @@ class RequestHttp {
         if (data.code == ResultEnum.OVERDUE) {
           removeStorage("tokenInfo");
           enqueueSnackbar({ variant: "error", message: "登录信息失效，请重新登录" });
-          // window.$navigate(LOGIN_URL);
+          window.$navigate("/login");
           return Promise.reject(data);
         }
         // Global error information interception (to prevent data stream from being returned when downloading files, and report errors directly without code)
         if (data.code && data.code !== ResultEnum.SUCCESS) {
-          enqueueSnackbar({ variant: "error", message: data.message });
+          if (config.showDialog) {
+            enqueueSnackbar({ variant: "error", message: data.message });
+          }
           return Promise.reject(data);
         }
         // Successful request (no need to handle failure logic on the page unless there are special circumstances)
         return data;
       },
       async (error: AxiosError) => {
-        // const { response } = error;
+        const { response } = error;
         tryHideFullScreenLoading();
         // Request timeout && network error judged separately, no response
         if (error.message.indexOf("timeout") !== -1) enqueueSnackbar({ variant: "error", message: "请求超时！请您稍后重试" });
         if (error.message.indexOf("Network Error") !== -1)
           enqueueSnackbar({ variant: "error", message: "网络错误！请您稍后重试" });
         // Do different processing according to the error status code of the server response
-        // if (response) checkStatus(response.status);
+        if (response) checkStatus(response.status);
         // The server does not return any results (maybe the server is wrong or the client is disconnected from the network), disconnection processing: you can jump to the disconnection page
-        // if (!window.navigator.onLine) window.$navigate("/500");
+        if (!window.navigator.onLine) window.$navigate("/500");
         return Promise.reject(error);
       }
     );
   }
 
   get<R>({ url, path, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
-    const { showDialog, loading, cancel } = { showDialog: true, loading: true, cancel: true, ...config };
+    const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
     return this.service.get(serviceUrl, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
   }
 
   post<R>({ url, path, data, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
-    const { showDialog, loading, cancel } = { showDialog: true, loading: true, cancel: true, ...config };
+    const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
     return this.service.post(serviceUrl, data, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
   }
 
   delete<R>({ url, path, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
-    const { showDialog, loading, cancel } = { showDialog: true, loading: true, cancel: true, ...config };
+    const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
     return this.service.delete(serviceUrl, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
   }
 
   put<R>({ url, path, data, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
-    const { showDialog, loading, cancel } = { showDialog: true, loading: true, cancel: true, ...config };
+    const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
     return this.service.put(serviceUrl, data, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
   }

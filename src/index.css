@@ -25,3 +25,7 @@
   font-weight: 900;
   src: url("./assets/fonts/SourceHanSansCN/Heavy.otf");
 }
+
+#root {
+  height: 100vh;
+}

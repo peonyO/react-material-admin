@@ -1,4 +1,4 @@
-import { InternalAxiosRequestConfig } from "axios";
+import { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 export interface ExtendsAxiosRequestConfig {
   loading?: boolean;
@@ -7,6 +7,10 @@ export interface ExtendsAxiosRequestConfig {
 }
 
 export type CustomAxiosRequestConfig = ExtendsAxiosRequestConfig & InternalAxiosRequestConfig;
+
+export interface CustomAxiosResponse extends AxiosResponse {
+  config: CustomAxiosRequestConfig;
+}
 
 export interface RequestConfig {
   url?: string;

@@ -5,8 +5,25 @@ declare interface TokenInfo {
   token: string;
 }
 
+declare interface MenuItems {
+  pagePath: "string";
+  icon?: "string";
+  title: "string";
+  dirPath: "string";
+  id: "string";
+  isFull: boolean;
+  isHide: boolean;
+  children?: MenuItems[];
+}
+
 declare interface UserInfo {
-  name: string;
-  avatar: string;
+  nickname: string;
+  menuList: MenuItems[];
+}
+//#endregion
+
+//#region global loaderData
+declare interface DefaultLoaderData {
+  title?: string;
 }
 //#endregion

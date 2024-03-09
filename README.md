@@ -17,11 +17,11 @@ eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交
 - [ ] vite 配置项
 - [ ] mock
 - [ ] 路由组件 (包含权限/按钮权限，登录，退出登录)
-- [ ] axios 封装
-- [ ] storage 封装
-- [ ] console.log 封装
+- [x] axios 封装
+- [x] storage 封装
+- [x] console.log 封装
 - [ ] 整体颜色搭配
-- [ ] is 封装
+- [x] is 封装
 - [ ] Layout
 - [ ] Memu
 - [ ] 路由搜索组件（通过搜索跳转页面）

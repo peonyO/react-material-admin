@@ -3,15 +3,23 @@ import { LoadingButton } from "@mui/lab";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import InfoIcon from "@mui/icons-material/Info";
-import { LoginService } from "@/services/modules/user";
+import { LoginService } from "@/services";
 import { LoginData } from "@/services/interface/user";
 import { setStorage } from "@/utils";
+import { useNavigate } from "react-router-dom";
+import { usePermissions } from "@/hooks";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const { initPermissions } = usePermissions();
+
   const { mutate: mutateLogin, isPending: loginLoading } = useMutation({
     mutationFn: LoginService,
-    onSuccess: result => {
+    onSuccess: async result => {
       setStorage("tokenInfo", result.result);
+      /** 登录成功以后一定要初始化 */
+      await initPermissions();
+      navigate("/home");
     }
   });
 

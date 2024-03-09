@@ -9,3 +9,10 @@ export const LoginService: Service<TokenInfo, LoginData> = data => {
     data
   });
 };
+
+/** 获取用户信息 */
+export const getUserInfoService: Service<UserInfo> = () => {
+  return service.get({
+    path: "/user/info"
+  });
+};

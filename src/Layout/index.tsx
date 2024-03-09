@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
+import { useOutlet } from "react-router-dom";
 
 const Layout: React.FC = () => {
-  return (
-    <div>
-      <Link to="/login">跳转登录页</Link>
-    </div>
-  );
+  const outlet = useOutlet();
+
+  return <div>{outlet}</div>;
 };
 
 export default Layout;

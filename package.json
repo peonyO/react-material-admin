@@ -9,7 +9,7 @@
     "lint:lint-staged": "lint-staged",
     "preview": "vite preview",
     "prepare": "husky",
-    "commit": "git add -A && git pull && git-cz  && git push"
+    "commit": "git add -A && git-cz && git pull  && git push"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -57,5 +57,10 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
     "vite-plugin-chunk-split": "^0.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
