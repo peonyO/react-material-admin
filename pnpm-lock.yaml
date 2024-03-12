@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -29,6 +29,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  immer:
+    specifier: ^10.0.4
+    version: 10.0.4
   notistack:
     specifier: ^3.0.1
     version: 3.0.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
@@ -49,7 +52,7 @@ dependencies:
     version: 17.5.0(react-dom@18.2.0)(react@18.2.0)
   zustand:
     specifier: ^4.5.2
-    version: 4.5.2(@types/react@18.2.56)(react@18.2.0)
+    version: 4.5.2(@types/react@18.2.56)(immer@10.0.4)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -100,6 +103,9 @@ devDependencies:
   eslint-plugin-react-refresh:
     specifier: ^0.4.5
     version: 0.4.5(eslint@8.56.0)
+  eslint-plugin-tailwindcss:
+    specifier: ^3.15.1
+    version: 3.15.1(tailwindcss@3.4.1)
   husky:
     specifier: ^9.0.11
     version: 9.0.11
@@ -127,9 +133,6 @@ devDependencies:
   stylelint-config-standard:
     specifier: ^36.0.0
     version: 36.0.0(stylelint@16.2.1)
-  stylelint-config-tailwindcss:
-    specifier: ^0.0.7
-    version: 0.0.7(stylelint@16.2.1)(tailwindcss@3.4.1)
   stylelint-prettier:
     specifier: ^5.0.0
     version: 5.0.0(prettier@3.2.5)(stylelint@16.2.1)
@@ -2555,6 +2558,17 @@ packages:
       eslint: 8.56.0
     dev: true
 
+  /eslint-plugin-tailwindcss@3.15.1(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-4RXRMIaMG07C2TBEW1k0VM4+dDazz1kxcZhkK4zirvmHGZTA4jnlSO2kq5mamuSPi+Wo17dh2SlC8IyFBuCd7Q==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: ^3.4.0
+    dependencies:
+      fast-glob: 3.3.2
+      postcss: 8.4.35
+      tailwindcss: 3.4.1
+    dev: true
+
   /eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3154,6 +3168,10 @@ packages:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
     dev: true
+
+  /immer@10.0.4:
+    resolution: {integrity: sha512-cuBuGK40P/sk5IzWa9QPUaAdvPHjkk1c+xYsd9oZw+YQQEV+10G0P5uMpGctZZKnyQ+ibRO08bD25nWLmYi2pw==}
+    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -4726,16 +4744,6 @@ packages:
       stylelint-config-recommended: 14.0.0(stylelint@16.2.1)
     dev: true
 
-  /stylelint-config-tailwindcss@0.0.7(stylelint@16.2.1)(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-n2dCWH+0ppr0/by4EYCLWW7g5LU+l4UzUIsYS7xbVHqvm9UWa7UhltNdNiz5NmLF/FmbJR4Yd/v9DuUGvLw1Tg==}
-    peerDependencies:
-      stylelint: '>=13.13.1'
-      tailwindcss: '>=2.2.16'
-    dependencies:
-      stylelint: 16.2.1(typescript@5.2.2)
-      tailwindcss: 3.4.1
-    dev: true
-
   /stylelint-order@6.0.4(stylelint@16.2.1):
     resolution: {integrity: sha512-0UuKo4+s1hgQ/uAxlYU4h0o0HS4NiQDud0NAUNI0aa8FJdmYHA5ZZTFHiV5FpmE3071e9pZx5j0QpVJW5zOCUA==}
     peerDependencies:
@@ -5261,7 +5269,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.5.2(@types/react@18.2.56)(react@18.2.0):
+  /zustand@4.5.2(@types/react@18.2.56)(immer@10.0.4)(react@18.2.0):
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -5277,6 +5285,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.2.56
+      immer: 10.0.4
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false

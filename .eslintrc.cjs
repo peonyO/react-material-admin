@@ -8,7 +8,14 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:tailwindcss/recommended"
+  ],
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx", "*.js"],
+      parser: "@typescript-eslint/parser"
+    }
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
@@ -19,6 +26,7 @@ module.exports = {
     "no-multiple-empty-lines": ["error", { max: 1 }], // Disallow multiple empty lines
     "no-use-before-define": "off", // Disallow using functions/classes/variables before they are defined
     "prefer-const": "off", // This rule is aimed at marking variables that are declared using let but never reassigned, and should be const instead
+    // eslint-plugin-import (https://www.npmjs.com/package/eslint-plugin-import)
     "import/order": [
       "error",
       {
@@ -44,6 +52,8 @@ module.exports = {
       }
     ],
     "import/no-unresolved": "error",
+    // eslint-plugin-tailwindcss
+    "tailwindcss/classnames-order": ["error"],
     // typeScript (https://typescript-eslint.io/rules)
     "@typescript-eslint/no-unused-vars": "error", // Disallow unused variables
     "@typescript-eslint/prefer-ts-expect-error": "error", // Disallow the use of @ts-ignore

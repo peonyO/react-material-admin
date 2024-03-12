@@ -9,6 +9,7 @@ react react-dom react-router-dom typescript vite axios tailwindcss dayjs
 - [**react-query**](https://swr.bootcss.com/docs/getting-started) 用于数据请求的 React Hooks 库
 - [**react-use**](https://streamich.github.io/react-use/?path=/story/components-usekey--demo) react hooks 库
 - [**react-hook-form**](https://react-hook-form.com/get-started) 表单验证库
+- [**remix icon**](https://remixicon.com/) 图标库
 
 eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交检验
 

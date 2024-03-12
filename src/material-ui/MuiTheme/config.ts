@@ -3,8 +3,8 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      light: "#00a76f",
-      main: "#00a76f",
+      light: "#A378FF",
+      main: "#8C57FF",
       contrastText: "#fff"
     }
   },
@@ -13,6 +13,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "8px"
+        }
+      }
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          borderRadius: "2px"
         }
       }
     },
