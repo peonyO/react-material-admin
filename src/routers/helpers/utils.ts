@@ -1,5 +1,5 @@
 /**
- * @description Flatten the menu using recursion for easier addition of dynamic routes.
+ * @description 使用递归将菜单扁平化，以便于添加动态路由。
  * @param {Array} menuList - The menu list.
  * @returns {Array}
  */
@@ -9,7 +9,7 @@ export function getFlatMenuList(menuList: UserInfo["menuList"]): UserInfo["menuL
 }
 
 /**
- * @description Use recursion to filter out the menu items that need to be rendered in the left menu (excluding menus with isHide == true).
+ * @description 使用递归过滤掉需要在左侧菜单中呈现的菜单项(不包括带有isHide == true的菜单)。
  * @param {Array} menuList - The menu list.
  * @returns {Array}
  */

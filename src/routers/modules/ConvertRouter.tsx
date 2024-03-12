@@ -6,31 +6,31 @@ import { getStorage } from "@/utils";
 import { getFlatMenuList } from "../helpers/utils";
 import LazyCmp from "./LazyCmp";
 
-// Import all view files in the views directory
+// 导入views目录中的所有视图文件
 const modules = import.meta.glob("@/pages/**/*.tsx") as Record<string, Parameters<typeof lazy<React.FC>>[number]>;
 
 /**
- * @description Convert menuList to the format required by react-router
- * @param {Array} authMenuList Permissions menu list
- * @returns {Array} The routing format required by the react-router
+ * @description 将menuList转换为react-router所需的格式
+ * @param {Array} authMenuList 权限菜单列表
+ * @returns {Array} react-router所要求的路由格式
  */
 export const convertToDynamicRouterFormat = (authMenuList: UserInfo["menuList"]) => {
-  // Flat Routing
+  // 扁平路由
   const flatMenuList = getFlatMenuList(authMenuList);
 
   const dynamicRouter: RouteObject[] = [{ element: <Layout />, children: [] }];
 
-  // Convert Routing
+  // 转换路由
   flatMenuList.forEach(item => {
     const routeObject: RouteObject = {};
 
-    // Convert element to antd component
+    // 懒加载路由
     if (item.dirPath && typeof item.dirPath === "string") {
       const lazyImport = lazy(modules["/src/pages/" + item.dirPath + "/index.tsx"]);
       routeObject.element = <LazyCmp loading={<PageLoading />} Lazy={lazyImport} />;
     }
 
-    // Set loader
+    // 设置 loader
     routeObject.loader = () => {
       const tokenInfo = getStorage("tokenInfo");
       if (tokenInfo) {

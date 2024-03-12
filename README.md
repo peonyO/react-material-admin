@@ -15,7 +15,7 @@ eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交
 ## 开发任务 （一定要适配手机端）
 
 - [ ] vite 配置项
-- [ ] mock
+- [x] mock
 - [ ] 路由组件 (包含权限/按钮权限，登录，退出登录)
 - [x] axios 封装
 - [x] storage 封装

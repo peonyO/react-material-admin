@@ -10,7 +10,7 @@ import LazyCmp from "./LazyCmp";
 export const wrappedStaticRouter: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/home" />
+    element: <Navigate to="/dashboards" />
   },
   {
     path: "/login",

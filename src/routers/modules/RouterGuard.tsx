@@ -3,7 +3,7 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { getStorage } from "@/utils";
 
 /**
- * @description Route guard component
+ * @description 路由守卫
  */
 interface RouterGuardProps {
   children: React.ReactNode;
@@ -13,8 +13,7 @@ const RouterGuard: React.FC<RouterGuardProps> = props => {
   const loader = useLoaderData();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log(pathname);
-  // Mount navigate to provide non-React function components or calls in custom React Hook functions
+  // 挂载导航以提供非React函数组件或自定义React Hook函数中的调用
   window.$navigate = navigate;
 
   useEffect(() => {
@@ -26,10 +25,10 @@ const RouterGuard: React.FC<RouterGuardProps> = props => {
       document.title = meta.title ? `${meta.title} - ${title}` : title;
     }
 
-    // whether login page
+    // 是否登录页面
     const isLoginPage = pathname === "/login";
 
-    // If there is not menu data, no token && the accessed page is not login, redirect to the login page
+    // 如果没有令牌，重定向到登录页面
     if (!tokenInfo && !isLoginPage) {
       return navigate("/login", { replace: true });
     }
