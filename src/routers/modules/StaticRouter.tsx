@@ -1,8 +1,13 @@
 import { lazy } from "react";
-import { Navigate, RouteObject, redirect } from "react-router-dom";
-import AppLoading from "@/components/Loading/App";
+
+import { Navigate, redirect } from "react-router-dom";
+
 import { getStorage } from "@/utils";
+import AppLoading from "@/components/Loading/App";
+
 import LazyCmp from "./LazyCmp";
+
+import type { RouteObject } from "react-router-dom";
 
 /**
  * staticRouter

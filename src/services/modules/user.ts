@@ -1,6 +1,6 @@
-import { Service } from "../interface/requestHttp";
-import { LoginData } from "../interface/user";
 import service from "../requestHttp";
+import { LoginData } from "../interface/user";
+import { Service } from "../interface/requestHttp";
 
 /** 登录 */
 export const LoginService: Service<TokenInfo, LoginData> = data => {

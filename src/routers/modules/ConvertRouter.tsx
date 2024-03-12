@@ -1,8 +1,11 @@
 import { lazy } from "react";
+
 import { RouteObject, redirect } from "react-router-dom";
+
+import { getStorage } from "@/utils";
 import Layout from "@/Layout";
 import PageLoading from "@/components/Loading/Page";
-import { getStorage } from "@/utils";
+
 import { getFlatMenuList } from "../helpers/utils";
 import LazyCmp from "./LazyCmp";
 

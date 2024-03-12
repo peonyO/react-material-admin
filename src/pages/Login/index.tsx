@@ -1,7 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import Illustration from "./modules/Illustration";
-import LoginCmp from "./modules/LoginForm";
+
 import logoImage from "@/assets/react.svg";
+
+import LoginCmp from "./modules/LoginForm";
+import Illustration from "./modules/Illustration";
 
 const Login: React.FC = () => {
   return (

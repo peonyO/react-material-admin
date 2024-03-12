@@ -1,5 +1,6 @@
-import { UserAction, UserState } from "@/stores/interface";
 import { create } from "zustand";
+
+import { UserAction, UserState } from "@/stores/interface";
 
 export type UserStoreState = UserState & UserAction;
 

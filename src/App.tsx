@@ -1,7 +1,9 @@
-import MuiTheme from "@/material-ui/MuiTheme";
-import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { CssBaseline } from "@mui/material";
+
+import MuiTheme from "@/material-ui/MuiTheme";
+
 import RouterProvider from "./routers";
 
 const queryClient = new QueryClient();

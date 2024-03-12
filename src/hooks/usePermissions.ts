@@ -1,6 +1,6 @@
+import { getStorage, logError } from "@/utils";
 import { useUserStore } from "@/stores";
 import { getUserInfoService } from "@/services";
-import { getStorage, logError } from "@/utils";
 
 /**
  * @description  Use permissions hook

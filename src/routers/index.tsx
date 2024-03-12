@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { RouterProvider as Router, RouteObject, createHashRouter, createBrowserRouter, Navigate } from "react-router-dom";
+
+import { RouterProvider as Router, type RouteObject, createHashRouter, createBrowserRouter, Navigate } from "react-router-dom";
+
 import { useUserStore } from "@/stores";
 import { usePermissions } from "@/hooks";
-import { convertToDynamicRouterFormat } from "./modules/ConvertRouter";
+
 import { wrappedStaticRouter } from "./modules/StaticRouter";
+import { convertToDynamicRouterFormat } from "./modules/ConvertRouter";
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 

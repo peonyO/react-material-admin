@@ -1,7 +1,8 @@
-import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import { Box, Button } from "@mui/material";
+
 import Result from "../Result";
+import Header from "./Header";
 
 const NotNetwork: React.FC = () => {
   return (

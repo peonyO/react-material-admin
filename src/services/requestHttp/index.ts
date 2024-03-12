@@ -1,16 +1,18 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 import { enqueueSnackbar } from "notistack";
-import { ResultEnum } from "@/enums/httpEnum";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
+
 import { getStorage, removeStorage } from "@/utils";
-import { AxiosCanceler } from "./helpers/axiosCancel";
-import { showFullScreenLoading, tryHideFullScreenLoading } from "./helpers/loading";
-import { checkStatus } from "./helpers/checkStatus";
+import { ResultEnum } from "@/enums/httpEnum";
+
 import {
   CustomAxiosRequestConfig,
   CustomAxiosResponse,
   ExtendsAxiosRequestConfig,
   RequestConfig
 } from "../interface/requestHttp";
+import { showFullScreenLoading, tryHideFullScreenLoading } from "./helpers/loading";
+import { checkStatus } from "./helpers/checkStatus";
+import { AxiosCanceler } from "./helpers/axiosCancel";
 
 const axiosCanceler = new AxiosCanceler();
 

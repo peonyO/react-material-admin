@@ -1,5 +1,6 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
 import { ElementType } from "react";
+
+import { Box, Container, Stack, Typography } from "@mui/material";
 
 interface Props {
   components?: ElementType;

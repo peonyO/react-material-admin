@@ -1,4 +1,5 @@
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
+
 import FullScreenLoading from "@/components/Loading/FullScreen";
 
 let needLoadingRequestCount = 0;
@@ -11,7 +12,7 @@ export const showFullScreenLoading = () => {
     let dom = document.createElement("div");
     dom.setAttribute("id", "loading");
     document.body.appendChild(dom);
-    ReactDOM.createRoot(dom).render(<FullScreenLoading />);
+    createRoot(dom).render(<FullScreenLoading />);
   }
   needLoadingRequestCount++;
 };
