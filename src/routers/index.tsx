@@ -8,7 +8,7 @@ import { wrappedStaticRouter } from "./modules/StaticRouter";
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
 /**
- * @description Route file entry
+ * @description 路由入口文件
  */
 const RouterProvider: React.FC = () => {
   const { initPermissions } = usePermissions();
@@ -18,20 +18,20 @@ const RouterProvider: React.FC = () => {
   const [routerList, setRouterList] = useState<RouteObject[]>(wrappedStaticRouter);
 
   useEffect(() => {
-    // When refreshing the page, there is no menu data
+    // 刷新页面时，没有菜单数据
     if (!userInfo) {
       initPermissions();
       return;
     }
 
-    // Convert to the routing structure required by react-router
+    // 转换为react-router所需的路由结构
     const dynamicRouter = convertToDynamicRouterFormat(userInfo.menuList);
     let allRouter = [...wrappedStaticRouter, ...dynamicRouter];
 
-    // To prevent 404 from refreshing the page, add the * route at the end
+    // 为了防止404刷新页面，请在页面末尾添加*路由
     allRouter.forEach(item => item.path === "*" && (item.element = <Navigate to="/404" replace />));
 
-    // Set routerList
+    // 设置 RouterList
     setRouterList(allRouter);
   }, [userInfo]);
 

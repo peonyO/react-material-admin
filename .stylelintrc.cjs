@@ -1,7 +1,13 @@
 // @see: https://stylelint.io
 module.exports = {
   root: true,
-  extends: ["stylelint-config-standard", "stylelint-config-recess-order", "stylelint-prettier/recommended"],
+  extends: [
+    "stylelint-config-recommended",
+    "stylelint-config-standard",
+    "stylelint-config-recess-order",
+    "stylelint-prettier/recommended",
+    "stylelint-config-tailwindcss"
+  ],
   overrides: [
     {
       files: ["**/*.html"],
