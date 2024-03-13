@@ -33,7 +33,7 @@ module.exports = {
         groups: ["builtin", "external", ["internal", "parent", "sibling", "index", "object"], "unknown", "type"],
         pathGroups: [
           {
-            pattern: "react",
+            pattern: "react*",
             group: "builtin",
             position: "before"
           },

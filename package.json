@@ -7,10 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint:lint-staged": "lint-staged",
-    "eslint": "eslint . --fix",
     "preview": "vite preview",
     "prepare": "husky",
-    "commit": "git add -A && git-cz && git pull  && git push",
+    "commit": "git add -A && git-cz && git pull && git push",
     "vercel": "vercel --prod"
   },
   "dependencies": {

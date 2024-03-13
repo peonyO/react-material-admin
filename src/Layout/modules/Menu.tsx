@@ -1,13 +1,70 @@
+import { useEffect, useState } from "react";
+
 import { Box } from "@mui/material";
 
-import Logo from "./Logo";
+import { useAppConfig } from "@/stores";
+
+import Nail from "../components/Nail";
+import Logo from "../components/Logo";
+
+import "../styles/menu.css";
 
 const Menu: React.FC = () => {
+  const { menuMode, menuAsideStatus } = useAppConfig(state => ({
+    menuMode: state.menuMode,
+    menuAsideStatus: state.menuAsideStatus
+  }));
+  /** 是否是垂直模式 */
+  const isVertical = menuMode === "vertical";
+  /** 是否是展开效果 */
+  const isSpread = menuAsideStatus === "default";
+  /** 鼠标是否悬停再 aside 上 */
+  const [isHovering, setHovering] = useState(false);
+  /** 过渡效果时，禁用menu所有操作，这样可以使折叠时先把menu折叠起来！！！ */
+  const [isDisabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    /** 改变 asideStatus 时，把 isHovering 改成 false，因为他一直在 aside 上时为 true */
+    setHovering(false);
+    setDisabled(true);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 300);
+  }, [isSpread]);
+
+  const handleMouseEnter = () => {
+    if (isVertical && !isSpread && !isHovering) {
+      setHovering(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isVertical && !isSpread && isHovering) {
+      setHovering(false);
+    }
+  };
+
+  const asideClassName = `menu${!isVertical || (isVertical && isSpread) ? "" : " menu_collapsed"}`;
+
+  /** 是否显示menu详情信息 */
+  const isShowMenuDetail = isHovering || (isVertical && isSpread) || !isVertical;
+
   return (
-    <aside className="sticky w-[260px]">
-      <Box py="15px" pl="20px" pr="16px">
-        <Logo />
-      </Box>
+    <aside
+      className={asideClassName + (isDisabled ? " pointer-events-none" : "")}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className={
+          "menu_container" + (isHovering || (isVertical && isSpread) ? " w-[260px]" : "") + (isHovering ? " shadow-lg" : "")
+        }
+      >
+        <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <Logo isSpread={isShowMenuDetail} />
+          <Nail isSpread={isShowMenuDetail} />
+        </Box>
+      </div>
     </aside>
   );
 };

@@ -9,11 +9,11 @@ type AppConfigStore = AppConfigState & AppConfigAction;
 export const useAppConfig = create<AppConfigStore>()(
   immer(
     persist(
-      set => ({
+      (set, get) => ({
         menuMode: "vertical",
         menuAsideStatus: "default",
-        setMenuMode: mode => set({ menuMode: mode }),
-        setMenuAsideStatus: status => set({ menuAsideStatus: status })
+        switchMenuMode: () => set({ menuMode: get().menuMode === "vertical" ? "horizontal" : "vertical" }),
+        switchMenuAsideStatus: () => set({ menuAsideStatus: get().menuAsideStatus === "default" ? "collapsed" : "default" })
       }),
       {
         name: "peony-app-config"

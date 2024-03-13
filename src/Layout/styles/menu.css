@@ -1,0 +1,15 @@
+.menu {
+  position: sticky;
+  width: 260px;
+  transition: width 0.3s ease-in-out;
+}
+
+.menu_collapsed {
+  width: 68px;
+}
+
+.menu_container {
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}

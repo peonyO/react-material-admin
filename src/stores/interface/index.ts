@@ -17,7 +17,7 @@ export interface AppConfigState {
 }
 
 export interface AppConfigAction {
-  setMenuMode: (token: AppConfigState["menuMode"]) => void;
-  setMenuAsideStatus: (token: AppConfigState["menuAsideStatus"]) => void;
+  switchMenuMode: () => void;
+  switchMenuAsideStatus: () => void;
 }
 //#endregion
