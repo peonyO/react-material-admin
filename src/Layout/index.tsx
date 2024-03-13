@@ -8,7 +8,7 @@ const Layout: React.FC = () => {
   const outlet = useOutlet();
 
   return (
-    <Box height="100vh" display="flex">
+    <Box flex="1" display="flex">
       <Menu />
       {outlet}
     </Box>

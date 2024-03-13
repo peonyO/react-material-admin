@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 import { useAppConfig } from "@/stores";
 
-import Nail from "../components/Nail";
+import Tack from "../components/Tack";
 import Logo from "../components/Logo";
 
 import "../styles/menu.css";
@@ -51,7 +51,6 @@ const Menu: React.FC = () => {
     return isHovering || (isVertical && isSpread) || !isVertical;
   }, [menuMode, menuAsideStatus, isHovering]);
 
-  console.log("menu");
   return (
     <aside
       className={asideClassName + (isDisabled ? " pointer-events-none" : "")}
@@ -65,7 +64,7 @@ const Menu: React.FC = () => {
       >
         <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Logo isSpread={isShowMenuDetail} />
-          <Nail isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} />
+          <Tack isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} />
         </Box>
       </div>
     </aside>
