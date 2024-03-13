@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { Box } from "@mui/material";
 
@@ -23,7 +23,7 @@ const Menu: React.FC = () => {
   /** 过渡效果时，禁用menu所有操作，这样可以使折叠时先把menu折叠起来！！！ */
   const [isDisabled, setDisabled] = useState(false);
 
-  useEffect(() => {
+  const switchMenuStatus = useCallback(() => {
     /** 改变 asideStatus 时，把 isHovering 改成 false，因为他一直在 aside 上时为 true */
     setHovering(false);
     setDisabled(true);
@@ -47,8 +47,11 @@ const Menu: React.FC = () => {
   const asideClassName = `menu${!isVertical || (isVertical && isSpread) ? "" : " menu_collapsed"}`;
 
   /** 是否显示menu详情信息 */
-  const isShowMenuDetail = isHovering || (isVertical && isSpread) || !isVertical;
+  const isShowMenuDetail = useMemo(() => {
+    return isHovering || (isVertical && isSpread) || !isVertical;
+  }, [menuMode, menuAsideStatus, isHovering]);
 
+  console.log("menu");
   return (
     <aside
       className={asideClassName + (isDisabled ? " pointer-events-none" : "")}
@@ -62,7 +65,7 @@ const Menu: React.FC = () => {
       >
         <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Logo isSpread={isShowMenuDetail} />
-          <Nail isSpread={isShowMenuDetail} />
+          <Nail isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} />
         </Box>
       </div>
     </aside>

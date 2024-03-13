@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 import LogoIcon from "@/assets/react.svg";
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const Logo: React.FC<Props> = ({ isSpread }) => {
+  console.log("logo");
   return (
     <Link to="/" className="flex items-center">
       <img src={LogoIcon} className="size-[30px]" />
@@ -22,4 +24,4 @@ const Logo: React.FC<Props> = ({ isSpread }) => {
   );
 };
 
-export default Logo;
+export default memo(Logo);

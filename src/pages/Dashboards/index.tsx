@@ -1,8 +1,15 @@
-import { LinearProgress } from "@mui/material";
+import { Button, LinearProgress } from "@mui/material";
+
+import { useAppConfig } from "@/stores";
 
 const Home: React.FC = () => {
+  const switchMenuAsideStatus = useAppConfig(state => state.switchMenuAsideStatus);
+  console.log("--首页--");
   return (
     <div className="flex-1">
+      <Button color="primary" onClick={switchMenuAsideStatus}>
+        改变menu显示状态
+      </Button>
       <LinearProgress sx={{ maxWidth: "360px" }} />
     </div>
   );

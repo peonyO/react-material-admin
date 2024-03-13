@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import CircleTwoToneIcon from "@mui/icons-material/CircleTwoTone";
 import AlbumTwoToneIcon from "@mui/icons-material/AlbumTwoTone";
 
@@ -17,14 +19,16 @@ const SwitchButton: React.FC<{ menuAsideStatus: AppConfigState["menuAsideStatus"
 
 interface Props {
   isSpread: boolean;
+  onSwitch: () => void;
 }
 
-const Nail: React.FC<Props> = ({ isSpread }) => {
+const Nail: React.FC<Props> = ({ isSpread, onSwitch }) => {
   const { menuAsideStatus, switchMenuAsideStatus } = useAppConfig(state => ({
     menuAsideStatus: state.menuAsideStatus,
     switchMenuAsideStatus: state.switchMenuAsideStatus
   }));
 
+  console.log("Nail");
   return (
     <span
       className={
@@ -33,6 +37,7 @@ const Nail: React.FC<Props> = ({ isSpread }) => {
       }
       onClick={() => {
         switchMenuAsideStatus();
+        onSwitch();
       }}
     >
       <SwitchButton menuAsideStatus={menuAsideStatus} />
@@ -40,4 +45,4 @@ const Nail: React.FC<Props> = ({ isSpread }) => {
   );
 };
 
-export default Nail;
+export default memo(Nail);

@@ -1,4 +1,5 @@
 import { useOutlet } from "react-router-dom";
+
 import { Box } from "@mui/material";
 
 import Menu from "./modules/Menu";
