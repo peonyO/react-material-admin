@@ -10,7 +10,10 @@ const Layout: React.FC = () => {
   return (
     <Box flex="1" display="flex">
       <Menu />
-      {outlet}
+      <section className="flex-1">
+        <header></header>
+        <main className="h-full">{outlet}</main>
+      </section>
     </Box>
   );
 };

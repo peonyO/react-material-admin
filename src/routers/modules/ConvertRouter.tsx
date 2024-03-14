@@ -1,6 +1,8 @@
+import { RouteObject, redirect } from "react-router-dom";
 import { lazy } from "react";
 
-import { RouteObject, redirect } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
+import dayjs from "dayjs";
 
 import { getStorage } from "@/utils";
 import Layout from "@/Layout";
@@ -37,7 +39,12 @@ export const convertToDynamicRouterFormat = (authMenuList: UserInfo["menuList"])
     routeObject.loader = () => {
       const tokenInfo = getStorage("tokenInfo");
       if (tokenInfo) {
-        return { title: item.title };
+        if (dayjs().valueOf() + 5 * 60 * 1000 > tokenInfo.expireTime) {
+          enqueueSnackbar({ variant: "error", message: "登录信息已过期，请重新登录" });
+          throw redirect("/login");
+        } else {
+          return { title: item.title };
+        }
       } else {
         throw redirect("/login");
       }

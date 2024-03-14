@@ -1,11 +1,11 @@
-import { Backdrop, CircularProgress, useTheme } from "@mui/material";
+import { Backdrop, CircularProgress, experimental_extendTheme as extendTheme } from "@mui/material";
 
 const FullScreenLoading: React.FC = () => {
-  const theme = useTheme();
+  const theme = extendTheme();
 
   return (
     <Backdrop open={true}>
-      <CircularProgress sx={{ color: theme.palette.primary.light }} />
+      <CircularProgress sx={{ color: theme.vars.palette.primary.main }} />
     </Backdrop>
   );
 };

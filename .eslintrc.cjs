@@ -17,7 +17,7 @@ module.exports = {
       parser: "@typescript-eslint/parser"
     }
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["node_modules", "dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "@typescript-eslint", "import"],
   rules: {

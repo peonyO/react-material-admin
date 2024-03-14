@@ -5,12 +5,22 @@ export const theme = extendTheme({
     light: {
       palette: {
         primary: {
-          light: "#A378FF",
-          main: "#8C57FF",
+          main: "#A378FF",
           contrastText: "#fff"
         },
         background: {
           default: "#F4F5FA"
+        }
+      }
+    },
+    dark: {
+      palette: {
+        primary: {
+          main: "#A378FF",
+          contrastText: "#fff"
+        },
+        background: {
+          default: "#28243D"
         }
       }
     }
@@ -26,7 +36,8 @@ export const theme = extendTheme({
     MuiLinearProgress: {
       styleOverrides: {
         root: {
-          borderRadius: "2px"
+          height: "6px",
+          borderRadius: "3px"
         }
       }
     },
