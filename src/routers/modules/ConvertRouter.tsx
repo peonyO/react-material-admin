@@ -39,6 +39,7 @@ export const convertToDynamicRouterFormat = (authMenuList: UserInfo["menuList"])
     routeObject.loader = () => {
       const tokenInfo = getStorage("tokenInfo");
       if (tokenInfo) {
+        /** 当 token 还有 5 分钟过期时，重新登录 */
         if (dayjs().valueOf() + 5 * 60 * 1000 > tokenInfo.expireTime) {
           enqueueSnackbar({ variant: "error", message: "登录信息已过期，请重新登录" });
           throw redirect("/login");
