@@ -4,7 +4,7 @@ import { lazy } from "react";
 import { enqueueSnackbar } from "notistack";
 import dayjs from "dayjs";
 
-import { getStorage } from "@/utils";
+import { getStorage, removeStorage } from "@/utils";
 import Layout from "@/Layout";
 import PageLoading from "@/components/Loading/Page";
 
@@ -41,6 +41,7 @@ export const convertToDynamicRouterFormat = (authMenuList: UserInfo["menuList"])
       if (tokenInfo) {
         /** 当 token 还有 5 分钟过期时，重新登录 */
         if (dayjs().valueOf() + 5 * 60 * 1000 > tokenInfo.expireTime) {
+          removeStorage("tokenInfo");
           enqueueSnackbar({ variant: "error", message: "登录信息已过期，请重新登录" });
           throw redirect("/login");
         } else {
