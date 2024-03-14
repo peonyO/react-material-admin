@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Logo: React.FC<Props> = ({ isSpread }) => {
-  console.log("logo");
   return (
     <Link to="/" className="flex items-center">
       <img src={LogoIcon} className="size-[30px]" />

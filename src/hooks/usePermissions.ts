@@ -3,19 +3,19 @@ import { useUserStore } from "@/stores";
 import { getUserInfoService } from "@/services";
 
 /**
- * @description  Use permissions hook
+ * @description 用户权限
  */
 export const usePermissions = () => {
   const setUserInfo = useUserStore(state => state.setUserInfo);
 
   const initPermissions = async () => {
-    const token = getStorage("tokenInfo");
-    if (token) {
+    const tokenInfo = getStorage("tokenInfo");
+    if (tokenInfo) {
       try {
         const userInfo = await getUserInfoService();
         setUserInfo(userInfo.result);
       } catch (error) {
-        logError("@permissions", error);
+        logError("@getUserInfoService", error);
       }
     }
   };
