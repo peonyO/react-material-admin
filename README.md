@@ -6,21 +6,22 @@ react react-dom react-router-dom typescript vite axios tailwindcss dayjs
 
 - [**Material UI**](https://mui.com/material-ui/getting-started/) 谷歌系 UI 框架
 - [**zustand**](https://mui.com/material-ui/getting-started/) 状态管理工具
-- [**useSWR**](https://swr.bootcss.com/docs/getting-started) 用于数据请求的 React Hooks 库
+- [**react-query**](https://swr.bootcss.com/docs/getting-started) 用于数据请求的 React Hooks 库
 - [**react-use**](https://streamich.github.io/react-use/?path=/story/components-usekey--demo) react hooks 库
+- [**react-hook-form**](https://react-hook-form.com/get-started) 表单验证库
 
 eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交检验
 
 ## 开发任务 （一定要适配手机端）
 
 - [ ] vite 配置项
-- [ ] mock
+- [x] mock
 - [ ] 路由组件 (包含权限/按钮权限，登录，退出登录)
-- [ ] axios 封装
-- [ ] storage 封装
-- [ ] console.log 封装
+- [x] axios 封装
+- [x] storage 封装
+- [x] console.log 封装
 - [ ] 整体颜色搭配
-- [ ] is 封装
+- [x] is 封装
 - [ ] Layout
 - [ ] Memu
 - [ ] 路由搜索组件（通过搜索跳转页面）
@@ -31,3 +32,11 @@ eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交
 - [ ] chat
 - [ ] 文件系统（各文件预览）
 - [ ] ...
+
+<!-- 页面适配方案 -->
+
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 900px
+lg, large: 1200px
+xl, extra-large: 1536px

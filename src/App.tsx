@@ -1,30 +1,25 @@
-import { memo, useCallback, useState } from "react";
+import { SnackbarProvider } from "notistack";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { CssBaseline } from "@mui/material";
 
-const CountButton = memo(function CountButton({
-  onClick,
-  count,
-  cmpName
-}: {
-  onClick: () => void;
-  count: number;
-  cmpName: string;
-}) {
-  console.log(cmpName, count);
-  return <button onClick={onClick}>{count}</button>;
-});
+import MuiTheme from "@/material-ui/MuiTheme";
+
+import RouterProvider from "./routers";
+
+const queryClient = new QueryClient();
 
 const App = () => {
-  const [count1, setCount1] = useState(0);
-  const increment1 = useCallback(() => setCount1(c => c + 1), []);
-
-  const [count2, setCount2] = useState(0);
-  const increment2 = useCallback(() => setCount2(c => c + 1), []);
-
   return (
-    <>
-      <CountButton cmpName="1" count={count1} onClick={increment1} />
-      <CountButton cmpName="2" count={count2} onClick={increment2} />
-    </>
+    <MuiTheme>
+      {/* 使用 material ui 的base样式，取消 tailwindcss 样式，tailwindcss 会覆盖 material ui 的样式 */}
+      <CssBaseline />
+      {/* 消息提示 */}
+      <SnackbarProvider anchorOrigin={{ horizontal: "center", vertical: "top" }} />
+      {/* react-query */}
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider />
+      </QueryClientProvider>
+    </MuiTheme>
   );
 };
 

@@ -1,0 +1,40 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.loader::before,
+.loader::after {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  content: "";
+  border: 8px solid rgb(0 167 111 / 50%);
+  border-radius: 10px;
+}
+
+.loader::before {
+  animation: animate 2s infinite linear;
+}
+
+.loader::after {
+  animation: animate2 2s infinite linear;
+}
+
+@keyframes animate {
+  100% {
+    transform: rotate(180deg) skew(360deg);
+  }
+}
+
+@keyframes animate2 {
+  100% {
+    transform: rotate(-180deg) skew(-360deg);
+  }
+}

@@ -1,7 +1,8 @@
+import { resolve } from "node:path";
+
+import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { resolve } from "node:path";
-import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {

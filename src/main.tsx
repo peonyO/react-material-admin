@@ -1,13 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import MuiTheme from "@/material-ui/MuiTheme";
+import { createRoot } from "react-dom/client";
+
 import App from "./App.tsx";
+
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <MuiTheme>
-      <App />
-    </MuiTheme>
-  </React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 );

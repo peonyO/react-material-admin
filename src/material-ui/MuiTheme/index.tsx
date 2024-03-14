@@ -1,8 +1,9 @@
-import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { StyledEngineProvider, Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
+
 import { theme } from "./config";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 const MuiTheme: React.FC<Props> = ({ children }) => {
@@ -10,7 +11,7 @@ const MuiTheme: React.FC<Props> = ({ children }) => {
     // 提高 tailwindcss 优先级，使 tailwindcss 可以替换 mui 的样式
     <StyledEngineProvider injectFirst>
       {/* 设置组件的样式，通过 theme 传入 */}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <CssVarsProvider theme={theme}>{children}</CssVarsProvider>
     </StyledEngineProvider>
   );
 };
