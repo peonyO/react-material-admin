@@ -14,10 +14,13 @@ export interface AppConfigState {
   menuMode: "vertical" | "horizontal";
   /** default 展开; collapsed 收缩; */
   menuAsideStatus: "default" | "collapsed";
+  /** 主题色 */
+  themeColor: string;
 }
 
 export interface AppConfigAction {
   switchMenuMode: () => void;
   switchMenuAsideStatus: () => void;
+  changeThemeColor: (color: string) => void;
 }
 //#endregion
