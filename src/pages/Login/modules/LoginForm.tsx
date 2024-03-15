@@ -21,7 +21,7 @@ const Login: React.FC = () => {
       setStorage("tokenInfo", result.result);
       /** 登录成功以后一定要初始化 */
       await initPermissions();
-      navigate("/home");
+      navigate("/");
     }
   });
 

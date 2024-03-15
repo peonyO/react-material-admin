@@ -2,7 +2,6 @@
   position: sticky;
   z-index: 10;
   width: 260px;
-  height: 100vh;
   transition: width 0.3s ease-in-out;
 }
 

@@ -20,7 +20,8 @@ export const theme = extendTheme({
           contrastText: "#fff"
         },
         background: {
-          default: "#28243D"
+          default: "#28243D",
+          paper: "#312D4B"
         }
       }
     }

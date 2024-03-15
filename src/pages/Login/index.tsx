@@ -7,7 +7,7 @@ import Illustration from "./modules/Illustration";
 
 const Login: React.FC = () => {
   return (
-    <Stack component="main" direction="row" minHeight="100vh">
+    <Stack component="main" direction="row" width="100%">
       <Typography
         alt="logo"
         component="img"
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
         width="40px"
         height="40px"
         position="absolute"
-        zIndex={9}
+        zIndex={2}
         sx={{ margin: { xs: "16px", md: "40px" } }}
       />
       <Illustration />

@@ -24,9 +24,12 @@
   src: url("./assets/fonts/SourceHanSansCN/Heavy.otf");
 }
 
+* {
+  border: 0 solid var(--mui-palette-divider);
+}
+
 #root {
   display: flex;
-  flex-direction: column;
   height: 100vh;
 }
 

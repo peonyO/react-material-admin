@@ -14,7 +14,7 @@ const App = () => {
       {/* 使用 material ui 的base样式，取消 tailwindcss 样式，tailwindcss 会覆盖 material ui 的样式 */}
       <CssBaseline />
       {/* 消息提示 */}
-      <SnackbarProvider anchorOrigin={{ horizontal: "center", vertical: "top" }} />
+      <SnackbarProvider autoHideDuration={1500} anchorOrigin={{ horizontal: "center", vertical: "top" }} />
       {/* react-query */}
       <QueryClientProvider client={queryClient}>
         <RouterProvider />

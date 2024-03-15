@@ -4,7 +4,7 @@ import { useAppConfig } from "@/stores";
 
 const Home: React.FC = () => {
   const switchMenuAsideStatus = useAppConfig(state => state.switchMenuAsideStatus);
-  console.log("--首页--");
+
   return (
     <div className="flex-1">
       <Button color="primary" onClick={switchMenuAsideStatus}>

@@ -28,7 +28,6 @@ const Tack: React.FC<Props> = ({ isSpread, onSwitch }) => {
     switchMenuAsideStatus: state.switchMenuAsideStatus
   }));
 
-  console.log("Tack");
   return (
     <span
       className={

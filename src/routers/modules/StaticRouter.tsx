@@ -18,11 +18,11 @@ export const wrappedStaticRouter: RouteObject[] = [
   {
     path: "/login",
     element: <LazyCmp loading={<AppLoading />} Lazy={lazy(() => import("@/pages/Login"))} />,
-    loader: ({ params }) => {
+    loader: () => {
       /** 如果有用户信息跳转首页 */
       const tokenInfo = getStorage("tokenInfo");
       if (tokenInfo) {
-        throw redirect(params.redirect || "/");
+        return redirect("/");
       } else {
         return {
           title: "登录"
