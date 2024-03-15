@@ -13,8 +13,7 @@ export const useTheme = () => {
         light: {
           palette: {
             primary: {
-              main: themeColor,
-              contrastText: "#fff"
+              main: themeColor
             },
             text: {
               primary: "rgb(46 38 61 / 0.9)",
@@ -29,8 +28,7 @@ export const useTheme = () => {
         dark: {
           palette: {
             primary: {
-              main: themeColor,
-              contrastText: "#fff"
+              main: themeColor
             },
             text: {
               primary: "rgb(231 227 252 / 0.9)",

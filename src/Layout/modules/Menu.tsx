@@ -59,7 +59,9 @@ const Menu: React.FC = () => {
     >
       <div
         className={
-          "menu_container" + (isHovering || (isVertical && isSpread) ? " w-[260px]" : "") + (isHovering ? " shadow-lg" : "")
+          "size-full overflow-hidden bg-[--mui-palette-background-default] transtion-[width,box-shadow] duration-300" +
+          (isHovering || (isVertical && isSpread) ? " w-[260px]" : "") +
+          (isHovering ? " shadow-lg" : "")
         }
       >
         <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
