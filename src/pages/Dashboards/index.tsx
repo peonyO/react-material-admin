@@ -4,7 +4,6 @@ import { useAppConfig } from "@/stores";
 
 const Home: React.FC = () => {
   const switchMenuAsideStatus = useAppConfig(state => state.switchMenuAsideStatus);
-
   return (
     <div className="flex-1">
       <Button color="primary" onClick={switchMenuAsideStatus}>

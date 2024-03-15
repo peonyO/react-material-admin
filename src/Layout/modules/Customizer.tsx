@@ -15,7 +15,7 @@ const Customizer: React.FC = () => {
   return (
     <div
       className={
-        "flex flex-col fixed right-0 h-full w-[300px] bg-[--mui-palette-background-paper] top-0 transition-[box-shadow,width] duration-300 ease-in-out" +
+        "flex flex-col fixed right-0 h-full w-[300px] bg-[--mui-palette-background-paper] top-0 transition-[box-shadow,right] duration-300 ease-in-out" +
         (isOpen ? " right-0 shadow-xl" : " right-[-300px]")
       }
     >

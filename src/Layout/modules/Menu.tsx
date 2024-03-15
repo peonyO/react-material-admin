@@ -59,7 +59,7 @@ const Menu: React.FC = () => {
     >
       <div
         className={
-          "size-full overflow-hidden bg-[--mui-palette-background-default] transtion-[width,box-shadow] duration-300" +
+          "size-full overflow-hidden bg-[--mui-palette-background-default] transition-[box-shadow,width] duration-300" +
           (isHovering || (isVertical && isSpread) ? " w-[260px]" : "") +
           (isHovering ? " shadow-lg" : "")
         }
