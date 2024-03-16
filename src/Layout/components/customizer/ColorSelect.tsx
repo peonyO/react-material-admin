@@ -7,7 +7,7 @@ import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import { useAppConfig } from "@/stores";
 
 /** 默认颜色 */
-const presetColors = ["#8C57FF", "#ff0000", "#9c27b0", "#ed6c02", "#2e7d32"];
+const presetColors = ["#ff3030", "#8C57FF", "#9c27b0", "#ed6c02", "#2e7d32"];
 
 const ColorSelect: React.FC = () => {
   const { themeColor, changeThemeColor } = useAppConfig(state => ({

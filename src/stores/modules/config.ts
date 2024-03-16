@@ -12,7 +12,7 @@ export const useAppConfig = create<AppConfigStore>()(
       (set, get) => ({
         menuMode: "vertical",
         menuAsideStatus: "default",
-        themeColor: "#8C57FF",
+        themeColor: "#ff3030",
         switchMenuMode: () => set({ menuMode: get().menuMode === "vertical" ? "horizontal" : "vertical" }),
         switchMenuAsideStatus: () => set({ menuAsideStatus: get().menuAsideStatus === "default" ? "collapsed" : "default" }),
         changeThemeColor: color => set({ themeColor: color })

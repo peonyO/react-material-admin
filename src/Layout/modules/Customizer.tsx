@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import SimpleBar from "simplebar-react";
-import { Chip, Stack, Typography } from "@mui/material";
+import { Chip, Stack, Typography, ButtonBase } from "@mui/material";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
-import { Setting } from "@/components/Icons";
+import { SolarSettingsBoldDuotone } from "@/components/Icons";
 
-import ModeSelect from "../components/ModeSelect";
-import ColorSelect from "../components/ColorSelect";
+import ModeSelect from "../components/customizer/ModeSelect";
+import ColorSelect from "../components/customizer/ColorSelect";
 
 const Customizer: React.FC = () => {
   const [isOpen, changeOpen] = useState(false);
@@ -15,7 +15,7 @@ const Customizer: React.FC = () => {
   return (
     <div
       className={
-        "flex flex-col fixed right-0 h-full w-[300px] bg-[--mui-palette-background-paper] top-0 transition-[box-shadow,right] duration-300 ease-in-out" +
+        "flex flex-col fixed right-0 h-full w-[300px] bg-[rgb(var(--mui-palette-background-defaultChannel)/90%)] backdrop-blur-[20px] top-0 transition-[box-shadow,right] duration-300 ease-in-out z-[1000]" +
         (isOpen ? " right-0 shadow-xl" : " right-[-300px]")
       }
     >
@@ -48,14 +48,14 @@ const Customizer: React.FC = () => {
           </div>
         </div>
       </SimpleBar>
-      <div
-        className="absolute left-[-40px] top-[20%] flex size-[40px] cursor-pointer items-center rounded-l-[50%] bg-[--mui-palette-primary-main] pl-[10px]"
+      <ButtonBase
+        className="absolute left-[-40px] top-[20%] flex size-[40px] cursor-pointer items-center rounded-l-[50%] rounded-r-none bg-[--mui-palette-primary-main] text-[25px]"
         onClick={() => changeOpen(!isOpen)}
       >
-        <Setting />
-      </div>
+        <SolarSettingsBoldDuotone className="text-[--mui-palette-primary-contrastText]" />
+      </ButtonBase>
     </div>
   );
 };
 
-export default Customizer;
+export default memo(Customizer);

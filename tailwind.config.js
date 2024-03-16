@@ -4,7 +4,6 @@ export default {
     preflight: false
   },
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  important: "#root",
   theme: {
     fontFamily: {
       sans: ["sans", "sans-serif"]

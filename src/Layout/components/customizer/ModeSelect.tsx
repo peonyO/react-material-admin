@@ -18,7 +18,7 @@ const ModeSelect: React.FC = () => {
   return (
     <div className="flex flex-col gap-2.5">
       <Typography component={"p"} fontWeight="bold">
-        模式
+        模式 Mode
       </Typography>
       <div className="grid grid-cols-3 gap-x-[16px] gap-y-[12px]">
         {modeList.map((item, index) => {
