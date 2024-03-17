@@ -1,21 +1,18 @@
-import { useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 
 import { Box } from "@mui/material";
 
-import { useAppConfig } from "@/stores";
-
-import Tack from "../components/Tack";
+import Tack from "../components/menu/Tack";
 import Logo from "../components/Logo";
 
 import "../styles/menu.css";
 
-const Menu: React.FC = () => {
-  const { menuMode, menuAsideStatus } = useAppConfig(state => ({
-    menuMode: state.menuMode,
-    menuAsideStatus: state.menuAsideStatus
-  }));
-  /** 是否是垂直模式 */
-  const isVertical = menuMode === "vertical";
+interface Props {
+  menuAsideStatus: "default" | "collapsed";
+  isShowTask?: boolean;
+}
+
+const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
   /** 是否是展开效果 */
   const isSpread = menuAsideStatus === "default";
   /** 鼠标是否悬停再 aside 上 */
@@ -33,23 +30,23 @@ const Menu: React.FC = () => {
   }, [isSpread]);
 
   const handleMouseEnter = () => {
-    if (isVertical && !isSpread && !isHovering) {
+    if (!isSpread && !isHovering) {
       setHovering(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (isVertical && !isSpread && isHovering) {
+    if (!isSpread && isHovering) {
       setHovering(false);
     }
   };
 
-  const asideClassName = `menu${!isVertical || (isVertical && isSpread) ? "" : " menu_collapsed"}`;
+  const asideClassName = `menu${isSpread ? "" : " menu_collapsed"}`;
 
   /** 是否显示menu详情信息 */
   const isShowMenuDetail = useMemo(() => {
-    return isHovering || (isVertical && isSpread) || !isVertical;
-  }, [menuMode, menuAsideStatus, isHovering]);
+    return isHovering || isSpread;
+  }, [menuAsideStatus, isHovering]);
 
   return (
     <aside
@@ -59,16 +56,18 @@ const Menu: React.FC = () => {
     >
       <div
         className={
-          "menu_container" + (isHovering || (isVertical && isSpread) ? " w-[260px]" : "") + (isHovering ? " shadow-lg" : "")
+          "size-full overflow-hidden bg-[--mui-palette-background-default] transition-[box-shadow,width] duration-300" +
+          (isHovering || isSpread ? " w-[260px]" : "") +
+          (isHovering ? " shadow-lg" : "")
         }
       >
-        <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box py="17px" pl="24px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Logo isSpread={isShowMenuDetail} />
-          <Tack isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} />
+          {isShowTask ? <Tack isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} /> : <></>}
         </Box>
       </div>
     </aside>
   );
 };
 
-export default Menu;
+export default memo(Menu);
