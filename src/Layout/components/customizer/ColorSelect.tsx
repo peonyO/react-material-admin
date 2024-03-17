@@ -1,5 +1,5 @@
 import { HexColorPicker } from "react-colorful";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import { ButtonBase, Popover, Typography } from "@mui/material";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
@@ -14,6 +14,7 @@ const ColorSelect: React.FC = () => {
     themeColor: state.themeColor,
     changeThemeColor: state.changeThemeColor
   }));
+  console.log("====");
 
   /** 当前选中的颜色索引 */
   const currentColorIndex = presetColors.findIndex(item => item === themeColor);
@@ -103,4 +104,4 @@ const ColorSelect: React.FC = () => {
   );
 };
 
-export default ColorSelect;
+export default memo(ColorSelect);

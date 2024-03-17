@@ -61,7 +61,7 @@ const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
           (isHovering ? " shadow-lg" : "")
         }
       >
-        <Box py="15px" pl="20px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box py="17px" pl="24px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Logo isSpread={isShowMenuDetail} />
           {isShowTask ? <Tack isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} /> : <></>}
         </Box>

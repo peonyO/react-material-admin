@@ -16,11 +16,14 @@ export interface AppConfigState {
   menuAsideStatus: "default" | "collapsed";
   /** 主题色 */
   themeColor: string;
+  /** 是否灰色模式 */
+  isGray: boolean;
 }
 
 export interface AppConfigAction {
-  switchMenuMode: () => void;
-  switchMenuAsideStatus: () => void;
+  switchMenuMode: (menuMode?: AppConfigState["menuMode"]) => void;
+  switchMenuAsideStatus: (menuAsideStatus?: AppConfigState["menuAsideStatus"]) => void;
   changeThemeColor: (color: string) => void;
+  setGrayMode: (isGray: boolean) => void;
 }
 //#endregion

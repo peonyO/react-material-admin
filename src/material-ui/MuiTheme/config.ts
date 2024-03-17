@@ -6,6 +6,7 @@ import { useAppConfig } from "@/stores";
 
 export const useTheme = () => {
   const themeColor = useAppConfig(state => state.themeColor);
+  const isGray = useAppConfig(state => state.isGray);
 
   const theme = useMemo(() => {
     return extendTheme({
@@ -43,6 +44,13 @@ export const useTheme = () => {
         }
       },
       components: {
+        MuiCssBaseline: {
+          styleOverrides: {
+            body: {
+              filter: isGray ? "grayscale(100%)" : "none"
+            }
+          }
+        },
         MuiOutlinedInput: {
           styleOverrides: {
             root: {
@@ -82,7 +90,21 @@ export const useTheme = () => {
         fontFamily: "sans, sans-serif"
       }
     });
-  }, [themeColor]);
+  }, [themeColor, isGray]);
 
   return theme;
 };
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      filter: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      filter?: string;
+    };
+  }
+}

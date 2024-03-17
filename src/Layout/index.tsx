@@ -4,6 +4,7 @@ import { useRef } from "react";
 
 import SimpleBar from "simplebar-react";
 import SimpleBarCore from "simplebar-core";
+import { Stack } from "@mui/material";
 
 import { useAppConfig } from "@/stores";
 import { useMediaQuery } from "@/material-ui/hooks";
@@ -35,13 +36,16 @@ const Layout: React.FC = () => {
 
   return (
     <>
-      {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
-      <div className="relative z-[1] flex-1 overflow-hidden">
-        <SimpleBar ref={scrollBarRef} className="size-full">
-          <Header menuMode={menuMode} isMediaLg={isMediaLg} />
-          <main className="h-full">{outlet}</main>
-        </SimpleBar>
-      </div>
+      <Stack flex="1" direction="row">
+        {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
+        <div className="relative z-[1] flex-1 overflow-hidden">
+          <SimpleBar ref={scrollBarRef} className="size-full">
+            <Header menuMode={menuMode} isMediaLg={isMediaLg} />
+            <main className="h-full">{outlet}</main>
+          </SimpleBar>
+        </div>
+      </Stack>
+
       {isMediaLg ? <Customizer /> : <></>}
     </>
   );

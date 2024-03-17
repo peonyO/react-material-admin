@@ -23,7 +23,7 @@ const Header: React.FC<Props> = ({ menuMode, isMediaLg }) => {
           <Box sx={{ flexGrow: 1 }}>
             {isMediaLg ? (
               menuMode === "horizontal" ? (
-                <Logo />
+                <Logo isShowTitle={false} />
               ) : (
                 <></>
               )

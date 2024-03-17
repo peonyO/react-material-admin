@@ -1,15 +1,20 @@
 import { memo, useState } from "react";
 
 import SimpleBar from "simplebar-react";
-import { Chip, Stack, Typography, ButtonBase } from "@mui/material";
+import { Chip, Stack, Typography, ButtonBase, Divider, Switch } from "@mui/material";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
+import { useAppConfig } from "@/stores";
 import { SolarSettingsBoldDuotone } from "@/components/Icons";
 
+import SettingLayout from "../components/customizer/SettingLayout";
 import ModeSelect from "../components/customizer/ModeSelect";
 import ColorSelect from "../components/customizer/ColorSelect";
 
 const Customizer: React.FC = () => {
+  const isGray = useAppConfig(state => state.isGray);
+  const setGrayMode = useAppConfig(state => state.setGrayMode);
+
   const [isOpen, changeOpen] = useState(false);
 
   return (
@@ -19,6 +24,7 @@ const Customizer: React.FC = () => {
         (isOpen ? " right-0 shadow-xl" : " right-[-300px]")
       }
     >
+      {/** header */}
       <Stack
         component={"header"}
         direction="row"
@@ -37,17 +43,42 @@ const Customizer: React.FC = () => {
           <CloseTwoToneIcon className="cursor-pointer text-[--mui-palette-action-active]" onClick={() => changeOpen(false)} />
         </Stack>
       </Stack>
-      <SimpleBar className="flex-1">
-        <div className="p-[20px]">
-          <div className="flex flex-col gap-[20px]">
-            <div>
-              <Chip label="编辑主题" />
+      {/* 设置中心 */}
+      <div className="flex-1 overflow-hidden">
+        <SimpleBar className="h-full">
+          <div className="p-[20px]">
+            <div className="grid gap-[20px]">
+              <div>
+                <Chip label="编辑主题" />
+              </div>
+              <ColorSelect />
+              <ModeSelect />
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Typography component="p">灰色模式</Typography>
+                <Switch defaultChecked={isGray} onChange={$event => setGrayMode($event.target.checked)} />
+              </Stack>
+              <Divider />
+              <div>
+                <Chip label="界面布局" />
+              </div>
+              <SettingLayout />
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Typography component="p">面包屑</Typography>
+                <Switch />
+              </Stack>
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Typography component="p">历史记录（标签栏）</Typography>
+                <Switch />
+              </Stack>
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Typography component="p">滚动到顶部按钮</Typography>
+                <Switch />
+              </Stack>
             </div>
-            <ColorSelect />
-            <ModeSelect />
           </div>
-        </div>
-      </SimpleBar>
+        </SimpleBar>
+      </div>
+      {/* 打开\关闭 设置中心 按钮 */}
       <ButtonBase
         className="absolute left-[-40px] top-[20%] flex size-[40px] cursor-pointer items-center rounded-l-[50%] rounded-r-none bg-[--mui-palette-primary-main] text-[25px]"
         onClick={() => changeOpen(!isOpen)}

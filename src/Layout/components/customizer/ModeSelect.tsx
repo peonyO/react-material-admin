@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { ButtonBase, Typography, useColorScheme } from "@mui/material";
 
 import { IconParkTwotoneSunOne, SolarCloudyMoonBoldDuotone, FluentDesktopSync16Filled } from "@/components/Icons";
@@ -44,4 +46,4 @@ const ModeSelect: React.FC = () => {
   );
 };
 
-export default ModeSelect;
+export default memo(ModeSelect);
