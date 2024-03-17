@@ -16,3 +16,10 @@ export const getUserInfoService: Service<UserInfo> = () => {
     path: "/user/info"
   });
 };
+
+/** 获取按钮权限集合 */
+export const getButtonListService: Service<string[]> = () => {
+  return service.get({
+    path: "/auth/buttons"
+  });
+};
