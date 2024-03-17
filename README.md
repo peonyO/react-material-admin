@@ -15,16 +15,16 @@ eslint prettier stylelint lint-staged husky 用于规范代码，和代码提交
 
 ## 开发任务 （一定要适配手机端）
 
-- [ ] vite 配置项
+- [x] vite 配置项
 - [x] mock
-- [ ] 路由组件 (包含权限/按钮权限，登录，退出登录)
+- [x] 路由组件 (包含权限/按钮权限，登录，退出登录)
 - [x] axios 封装
 - [x] storage 封装
 - [x] console.log 封装
-- [ ] 整体颜色搭配
+- [x] 整体颜色搭配
 - [x] is 封装
-- [ ] Layout
-- [ ] Memu
+- [x] Layout
+- [x] Memu
 - [ ] 路由搜索组件（通过搜索跳转页面）
 - [ ] Header
 - [ ] Container （将滚动条缓存到 zustand，用于返回时直接跳到上次访问位置）

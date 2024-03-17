@@ -12,8 +12,16 @@ export const useAppConfig = create<AppConfigStore>()(
       (set, get) => ({
         menuMode: "vertical",
         menuAsideStatus: "default",
-        switchMenuMode: () => set({ menuMode: get().menuMode === "vertical" ? "horizontal" : "vertical" }),
-        switchMenuAsideStatus: () => set({ menuAsideStatus: get().menuAsideStatus === "default" ? "collapsed" : "default" })
+        themeColor: "#ff3030",
+        isGray: false,
+        switchMenuMode: menuMode =>
+          set({ menuMode: menuMode ? menuMode : get().menuMode === "vertical" ? "horizontal" : "vertical" }),
+        switchMenuAsideStatus: menuAsideStatus =>
+          set({
+            menuAsideStatus: menuAsideStatus ? menuAsideStatus : get().menuAsideStatus === "default" ? "collapsed" : "default"
+          }),
+        changeThemeColor: color => set({ themeColor: color }),
+        setGrayMode: isGray => set({ isGray })
       }),
       {
         name: "peony-app-config"

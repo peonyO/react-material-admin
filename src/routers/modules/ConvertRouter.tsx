@@ -29,6 +29,8 @@ export const convertToDynamicRouterFormat = (authMenuList: UserInfo["menuList"])
     if (item.dirPath && typeof item.dirPath === "string") {
       const lazyImport = lazy(modules["/src/pages/" + item.dirPath + "/index.tsx"]);
       routeObject.element = <LazyCmp loading={<PageLoading />} Lazy={lazyImport} />;
+    } else {
+      return;
     }
 
     // 设置 loader
