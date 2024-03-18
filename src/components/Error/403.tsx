@@ -7,7 +7,7 @@ import Header from "./Header";
 
 const NotAuth: React.FC = () => {
   return (
-    <div className="w-screen">
+    <div className="h-screen w-screen">
       <Header />
       <Box className="flex h-full flex-col justify-center">
         <Result

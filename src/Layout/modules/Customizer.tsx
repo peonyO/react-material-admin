@@ -20,7 +20,7 @@ const Customizer: React.FC = () => {
   return (
     <div
       className={
-        "flex flex-col fixed right-0 h-full w-[300px] bg-[rgb(var(--mui-palette-background-defaultChannel)/90%)] backdrop-blur-[20px] top-0 transition-[box-shadow,right] duration-300 ease-in-out z-[1000]" +
+        "flex flex-col fixed right-0 h-full w-[300px] backdrop-blur-[10px] top-0 transition-[box-shadow,right] duration-300 ease-in-out z-[1000]" +
         (isOpen ? " right-0 shadow-xl" : " right-[-300px]")
       }
     >
@@ -49,7 +49,7 @@ const Customizer: React.FC = () => {
           <div className="p-[20px]">
             <div className="grid gap-[20px]">
               <div>
-                <Chip label="编辑主题" />
+                <Chip size="medium" variant="filled" label="编辑主题" />
               </div>
               <ColorSelect />
               <ModeSelect />

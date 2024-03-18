@@ -7,7 +7,7 @@ import Header from "./Header";
 
 const NotNetwork: React.FC = () => {
   return (
-    <Box className="w-screen">
+    <Box className="h-screen w-screen">
       <Header />
       <Box className="flex h-full flex-col justify-center">
         <Result

@@ -9,3 +9,13 @@
 .menu_collapsed {
   width: 68px;
 }
+
+.scroll_mask {
+  background: linear-gradient(
+    var(--mui-palette-background-default) 5%,
+    rgb(var(--mui-palette-background-defaultChannel) / 85%) 30%,
+    rgb(var(--mui-palette-background-defaultChannel) / 50%) 65%,
+    rgb(var(--mui-palette-background-defaultChannel) / 30%) 75%,
+    transparent
+  );
+}
