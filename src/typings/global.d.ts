@@ -6,13 +6,15 @@ declare interface TokenInfo {
 }
 
 declare interface MenuItems {
-  pagePath: "string";
-  icon?: "string";
-  title: "string";
-  dirPath: "string";
-  id: "string";
+  pagePath: string;
+  icon: string;
+  title: string;
+  dirPath: string;
+  id: string;
   isFull: boolean;
   isHide: boolean;
+  isLink: boolean;
+  description: string;
   children?: MenuItems[];
 }
 
