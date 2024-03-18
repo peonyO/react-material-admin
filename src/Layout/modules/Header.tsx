@@ -10,28 +10,45 @@ import DrawerMenu, { DrawerMenuRefs } from "../components/header/DrawerMenu";
 
 interface Props {
   menuMode?: "vertical" | "horizontal";
+  menuAsideStatus?: "default" | "collapsed";
   isMediaLg?: boolean;
 }
 
-const Header: React.FC<Props> = ({ menuMode, isMediaLg }) => {
+const Header: React.FC<Props> = ({ menuMode, menuAsideStatus, isMediaLg }) => {
   const drawerMenuRef = useRef<DrawerMenuRefs>(null);
 
   return (
     <>
-      <AppBar position="sticky" color="transparent" className="shadow-none">
-        <Toolbar>
-          <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position="fixed"
+        color="transparent"
+        className={
+          "shadow-none" +
+          (menuMode === "vertical"
+            ? menuAsideStatus === "default"
+              ? " w-[calc(100%-260px)]"
+              : " w-[calc(100%-68px)]"
+            : " w-full") +
+          (menuMode === "vertical" ? " backdrop-blur-[10px]" : " bg-[--mui-palette-background-default]")
+        }
+      >
+        <Toolbar disableGutters sx={{ px: "40px" }}>
+          <Box sx={{ flexGrow: "1", display: "flex" }}>
+            {/* logo and menuIcon */}
             {isMediaLg ? (
               menuMode === "horizontal" ? (
-                <Logo isShowTitle={false} />
+                <Box sx={{ mr: 2 }}>
+                  <Logo isShowTitle={false} />
+                </Box>
               ) : (
                 <></>
               )
             ) : (
-              <IconButton className="p-[10px]" onClick={() => drawerMenuRef.current?.openMenu()}>
+              <IconButton sx={{ mr: 2 }} className="p-[10px]" onClick={() => drawerMenuRef.current?.openMenu()}>
                 <MenuCollapsed />
               </IconButton>
             )}
+            <div></div>
           </Box>
           <Box>
             <IconButton>

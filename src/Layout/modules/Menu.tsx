@@ -73,11 +73,16 @@ const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
       <div
         className={
           "flex flex-col size-full overflow-hidden bg-[--mui-palette-background-default] transition-[box-shadow,width] duration-300" +
-          (isHovering || isSpread ? " w-[260px]" : "") +
+          (isShowMenuDetail ? " w-[260px]" : "") +
           (isHovering ? " shadow-lg" : "")
         }
       >
-        <Box py="17px" pl="24px" pr="16px" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box
+          py="17px"
+          pl={isShowMenuDetail ? "24px" : "19px"}
+          pr="16px"
+          sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+        >
           <Logo isSpread={isShowMenuDetail} />
           {isShowTask ? <Tack isSpread={isShowMenuDetail} onSwitch={switchMenuStatus} /> : <></>}
         </Box>

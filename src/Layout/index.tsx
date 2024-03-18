@@ -24,8 +24,8 @@ const Layout: React.FC = () => {
         {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
         <div className="relative z-[1] flex-1 overflow-hidden">
           <SimpleBar className="size-full">
-            <Header menuMode={menuMode} isMediaLg={isMediaLg} />
-            <main className="h-full">{outlet}</main>
+            <Header menuMode={menuMode} menuAsideStatus={menuAsideStatus} isMediaLg={isMediaLg} />
+            <main className="h-full px-[40px] pt-[88px]">{outlet}</main>
           </SimpleBar>
         </div>
       </Stack>

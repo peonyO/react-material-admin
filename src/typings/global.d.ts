@@ -14,6 +14,11 @@ declare interface MenuItems {
   isFull: boolean;
   isHide: boolean;
   isLink: boolean;
+  tagInfo?: {
+    color?: "success" | "info" | "warning" | "error" | "primary" | "secondary";
+    text?: string;
+    icon?: string;
+  };
   description: string;
   children?: MenuItems[];
 }

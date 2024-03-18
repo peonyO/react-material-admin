@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       <Button color="primary" onClick={() => switchMenuAsideStatus()}>
         改变menu显示状态
       </Button>
-      <LinearProgress sx={{ maxWidth: "360px" }} />
+      <LinearProgress sx={{ maxWidth: "100%" }} />
     </div>
   );
 };

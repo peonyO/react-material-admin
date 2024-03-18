@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { createElement, memo, useState } from "react";
 
-import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
+import { Chip, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
 import LaunchTwoToneIcon from "@mui/icons-material/LaunchTwoTone";
 import { ExpandMore } from "@mui/icons-material";
 
@@ -18,7 +18,7 @@ interface ChildrenMenuItemProps {
 
 /** 子级 */
 const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem, isShowDot, hierarchy, pathname }) => {
-  const { icon, title, description, children, isLink, pagePath } = menuItem;
+  const { icon, title, description, children, isHide, isLink, tagInfo, pagePath } = menuItem;
   const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
   const customIcons: { [key: string]: any } = Icons;
 
@@ -33,7 +33,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
     }
   };
 
-  return (
+  return !isHide ? (
     <li>
       <Link to={children ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
         <ListItemButton
@@ -108,6 +108,15 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
               className: "line-clamp-1"
             }}
           />
+          {isSpread && tagInfo ? (
+            <Chip
+              color={tagInfo.color}
+              label={tagInfo.text}
+              icon={tagInfo.icon ? createElement(customIcons[tagInfo.icon] as any, { style: { fontSize: "16px" } }) : undefined}
+            ></Chip>
+          ) : (
+            <></>
+          )}
           {/* 展开标识符 */}
           {children && isSpread ? (
             <ExpandMore className={"transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")} />
@@ -139,6 +148,8 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
         <></>
       )}
     </li>
+  ) : (
+    <></>
   );
 };
 
