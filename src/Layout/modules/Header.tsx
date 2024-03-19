@@ -30,8 +30,9 @@ const Header: React.FC<Props> = ({ menuMode, menuAsideStatus, isMediaLg }) => {
               ? " w-[calc(100%-260px)]"
               : " w-[calc(100%-68px)]"
             : " w-full") +
-          (menuMode === "vertical" ? " backdrop-blur-[10px]" : " bg-[--mui-palette-background-default]")
+          (menuMode === "vertical" ? " backdrop-blur-[6px] " : " bg-[--mui-palette-background-default]")
         }
+        sx={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
       >
         <Toolbar disableGutters sx={{ px: isMediaLg ? "40px" : "20px" }}>
           <Box sx={{ flexGrow: "1", display: "flex" }}>

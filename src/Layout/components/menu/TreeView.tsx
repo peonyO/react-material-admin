@@ -1,7 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import { createElement, memo, useState } from "react";
 
-import { Chip, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
+import {
+  Chip,
+  Collapse,
+  Divider,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+  Tooltip,
+  Typography
+} from "@mui/material";
 import LaunchTwoToneIcon from "@mui/icons-material/LaunchTwoTone";
 import { ExpandMore } from "@mui/icons-material";
 
@@ -18,7 +29,7 @@ interface ChildrenMenuItemProps {
 
 /** 子级 */
 const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem, isShowDot, hierarchy, pathname }) => {
-  const { icon, title, description, children, isHide, isLink, tagInfo, pagePath } = menuItem;
+  const { icon, title, description, dirPath, children, isHide, isLink, tagInfo, pagePath } = menuItem;
   const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
   const customIcons: { [key: string]: any } = Icons;
 
@@ -35,7 +46,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
 
   return !isHide ? (
     <li>
-      <Link to={children ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
+      <Link to={children || !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
         <ListItemButton
           selected={isSelected}
           sx={{
@@ -84,7 +95,25 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
           {/* 标题和描述 */}
           <ListItemText
             primary={title}
-            secondary={description || null}
+            secondary={
+              description ? (
+                <Tooltip title={description.length > 14 ? description : null} placement="top">
+                  <Typography
+                    component="span"
+                    sx={{
+                      height: "18px",
+                      lineHeihgt: "18px",
+                      fontSize: "0.75rem",
+                      opacity: isSpread ? "1" : "0",
+                      transition: "opacity .3s"
+                    }}
+                    className="line-clamp-1"
+                  >
+                    {description}
+                  </Typography>
+                </Tooltip>
+              ) : null
+            }
             primaryTypographyProps={{
               sx: {
                 height: "22px",
@@ -92,16 +121,6 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
                 fontSize: "0.875rem",
                 color: isSelected ? "var(--mui-palette-primary-main)" : "var(--mui-palette-text-primary)",
                 fontWeight: isSelected ? "bold" : "",
-                opacity: isSpread ? "1" : "0",
-                transition: "opacity .3s"
-              },
-              className: "line-clamp-1"
-            }}
-            secondaryTypographyProps={{
-              sx: {
-                height: "18px",
-                lineHeihgt: "18px",
-                fontSize: "0.75rem",
                 opacity: isSpread ? "1" : "0",
                 transition: "opacity .3s"
               },
