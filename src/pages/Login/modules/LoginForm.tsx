@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 
 import { useMutation } from "@tanstack/react-query";
@@ -13,6 +13,7 @@ import { usePermissions } from "@/hooks";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const { initPermissions } = usePermissions();
 
   const { mutate: mutateLogin, isPending: loginLoading } = useMutation({
@@ -21,7 +22,9 @@ const Login: React.FC = () => {
       setStorage("tokenInfo", result.result);
       /** 登录成功以后一定要初始化 */
       await initPermissions();
-      navigate("/");
+      navigate(state.redirect || "/", {
+        replace: true
+      });
     }
   });
 

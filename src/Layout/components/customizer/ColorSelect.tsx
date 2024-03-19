@@ -14,7 +14,6 @@ const ColorSelect: React.FC = () => {
     themeColor: state.themeColor,
     changeThemeColor: state.changeThemeColor
   }));
-  console.log("====");
 
   /** 当前选中的颜色索引 */
   const currentColorIndex = presetColors.findIndex(item => item === themeColor);

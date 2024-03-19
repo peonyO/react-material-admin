@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import { PaletteColorChannel, PaletteColorOptions, experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 import { useAppConfig } from "@/stores";
+import redImage from "@/assets/images/popover/red-blur.png";
+import cyanImage from "@/assets/images/popover/cyan-blur.png";
 
 export const useTheme = () => {
   const themeColor = useAppConfig(state => state.themeColor);
@@ -74,6 +76,18 @@ export const useTheme = () => {
           styleOverrides: {
             body: {
               filter: isGray ? "grayscale(100%)" : "none"
+            }
+          }
+        },
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              backdropFilter: "blur(20px)",
+              backgroundColor: "rgb(var(--mui-palette-background-defaultChannel)/90%)",
+              backgroundImage: `url(${cyanImage}), url(${redImage})`,
+              backgroundRepeat: "no-repeat, no-repeat",
+              backgroundPosition: "right top, left bottom",
+              backgroundSize: "50%, 50%"
             }
           }
         },

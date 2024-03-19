@@ -47,6 +47,8 @@ declare interface ViteEnv {
   VITE_SERVICE_URL: string;
   /** 路由模式 */
   VITE_ROUTER_MODE: "hash" | "history";
+  /** 运行的端口号 */
+  VITE_PORT: number;
   /** 是否打开浏览器 */
   VITE_OPEN: boolean;
   /** 打包后是否生成包分析文件 */

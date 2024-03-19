@@ -6,8 +6,6 @@ import AuthButton from "@/components/AuthButton";
 const Home: React.FC = () => {
   const switchMenuAsideStatus = useAppConfig(state => state.switchMenuAsideStatus);
 
-  console.log("-----");
-
   return (
     <div className="flex-1">
       <Button color="primary" onClick={() => switchMenuAsideStatus()}>
