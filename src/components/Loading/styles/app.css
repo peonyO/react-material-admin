@@ -15,7 +15,7 @@
   width: 40px;
   height: 40px;
   content: "";
-  border: 8px solid rgb(0 167 111 / 50%);
+  border: 8px solid var(--mui-palette-primary-main);
   border-radius: 10px;
 }
 

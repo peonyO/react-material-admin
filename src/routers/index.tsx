@@ -20,6 +20,7 @@ const RouterProvider: React.FC = () => {
   const [routerList, setRouterList] = useState<RouteObject[]>(wrappedStaticRouter);
 
   useEffect(() => {
+    console.log(userInfo);
     // 刷新页面时，没有菜单数据
     if (!userInfo) {
       initPermissions();

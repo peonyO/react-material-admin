@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
-import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
+import { AppBar, Box, Toolbar } from "@mui/material";
 
 import Logo from "@/assets/react.svg";
 
@@ -14,9 +13,6 @@ const Header = () => {
             <img src={Logo} alt={import.meta.env.VITE_APP_NAME} className="size-[40px]" />
           </Link>
         </Box>
-        <IconButton>
-          <SettingsTwoToneIcon />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );
