@@ -44,7 +44,7 @@ const User: React.FC = () => {
   //#region 个人中心
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
-  const id = open ? "color-select" : undefined;
+  const id = open ? "user-info" : undefined;
 
   /** 打开个人中心 */
   const openUserInfo = ($event: React.MouseEvent<HTMLElement>) => {

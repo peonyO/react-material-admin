@@ -46,7 +46,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
 
   return !isHide ? (
     <li>
-      <Link to={children || !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
+      <Link to={children && !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
         <ListItemButton
           selected={isSelected}
           sx={{
