@@ -7,6 +7,7 @@ import { SolarSettingsBoldDuotone } from "@/components/Icons";
 
 import Logo from "../components/Logo";
 import User from "../components/header/User";
+import Search from "../components/header/Search";
 import DrawerMenu, { DrawerMenuRefs } from "../components/header/DrawerMenu";
 
 interface Props {
@@ -24,33 +25,32 @@ const Header: React.FC<Props> = ({ menuMode, menuAsideStatus, isMediaLg }) => {
         position="fixed"
         color="transparent"
         className={
-          "shadow-none" +
+          "shadow-none backdrop-blur-[6px]" +
           (menuMode === "vertical" && isMediaLg
             ? menuAsideStatus === "default"
               ? " w-[calc(100%-260px)]"
               : " w-[calc(100%-68px)]"
-            : " w-full") +
-          (menuMode === "vertical" ? " backdrop-blur-[6px] " : " bg-[--mui-palette-background-default]")
+            : " w-full")
         }
         sx={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
       >
         <Toolbar disableGutters sx={{ px: isMediaLg ? "40px" : "20px" }}>
-          <Box sx={{ flexGrow: "1", display: "flex" }}>
+          <Box sx={{ flexGrow: "1", display: "flex", gap: "10px" }}>
             {/* logo and menuIcon */}
             {isMediaLg ? (
               menuMode === "horizontal" ? (
-                <Box sx={{ mr: 2 }}>
-                  <Logo isShowTitle={false} />
-                </Box>
+                <Logo isShowTitle={false} />
               ) : (
                 <></>
               )
             ) : (
-              <IconButton sx={{ mr: 2 }} className="p-[10px]" onClick={() => drawerMenuRef.current?.openMenu()}>
+              // 小屏下的折叠菜单按钮
+              <IconButton className="p-[10px]" onClick={() => drawerMenuRef.current?.openMenu()}>
                 <MenuCollapsed />
               </IconButton>
             )}
-            <div></div>
+            {/* 搜索 */}
+            <Search isShowText={isMediaLg} />
           </Box>
           <Stack direction="row" sx={{ gap: { xs: "4px", md: "8px" } }}>
             <IconButton>

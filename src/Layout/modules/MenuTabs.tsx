@@ -10,27 +10,31 @@ import InfoIcon from "@mui/icons-material/Info";
 import { ExpandMore } from "@mui/icons-material";
 
 import { useUserStore } from "@/stores";
+import { getShowMenuList } from "@/routers/helpers/utils";
 import * as Icons from "@/components/Icons";
 
 interface TabsPopoverProps extends PopoverProps {
-  menuItems: MenuItems[];
+  menuitems: MenuItems[];
   pathname: string;
 }
 
 const TabsPopover: React.FC<TabsPopoverProps> = props => {
-  const { pathname } = props;
+  const { pathname, menuitems } = props;
   const customIcons: { [key: string]: any } = Icons;
 
   return (
     <HoverPopover {...props}>
       <Stack p="4px" gap="4px">
-        {props.menuItems.map(item => (
+        {menuitems.map(item => (
           <PopupState key={item.id} variant="popover" popupId={item.id}>
             {popupState => (
               <>
-                <Link to={item.children && !item.dirPath ? "#" : item.pagePath} target={item.isLink ? "_blank" : undefined}>
+                <Link
+                  to={item.children && !!item.children.length && !item.dirPath ? "#" : item.pagePath}
+                  target={item.isLink ? "_blank" : undefined}
+                >
                   <ButtonBase
-                    {...(item.children ? bindHover(popupState) : {})}
+                    {...(item.children && !!item.children.length ? bindHover(popupState) : {})}
                     sx={{ px: "8px", borderRadius: "6px", width: "152px", height: "34px", justifyContent: "space-between" }}
                     className={
                       "transition-colors hover:bg-[--mui-palette-action-hover]" +
@@ -60,10 +64,10 @@ const TabsPopover: React.FC<TabsPopoverProps> = props => {
                       <></>
                     )}
                     {/* 展开标识符 */}
-                    {item.children ? <ExpandMore className="-rotate-90" /> : <></>}
+                    {item.children && !!item.children.length ? <ExpandMore className="-rotate-90" /> : <></>}
                   </ButtonBase>
                 </Link>
-                {item.children ? (
+                {item.children && !!item.children.length ? (
                   <TabsPopover
                     {...bindPopover(popupState)}
                     anchorOrigin={{
@@ -74,7 +78,7 @@ const TabsPopover: React.FC<TabsPopoverProps> = props => {
                       vertical: "center",
                       horizontal: "left"
                     }}
-                    menuItems={item.children}
+                    menuitems={item.children}
                     pathname={pathname}
                   />
                 ) : (
@@ -97,11 +101,11 @@ const MenuTabs: React.FC = () => {
   const menuList = useMemo(() => {
     let filterMenuList: MenuItems[] = [];
     (userInfo?.menuList || []).forEach(item => {
-      if (item.children) {
+      if (item.children && !!item.children.length) {
         filterMenuList = filterMenuList.concat(item.children);
       }
     });
-    return filterMenuList;
+    return getShowMenuList(filterMenuList);
   }, [userInfo]);
 
   return (
@@ -120,14 +124,17 @@ const MenuTabs: React.FC = () => {
             <PopupState key={item.id} variant="popover" popupId={item.id}>
               {popupState => (
                 <>
-                  <Link to={item.children && !item.dirPath ? "#" : item.pagePath} target={item.isLink ? "_blank" : undefined}>
+                  <Link
+                    to={item.children && !!item.children.length && !item.dirPath ? "#" : item.pagePath}
+                    target={item.isLink ? "_blank" : undefined}
+                  >
                     <ButtonBase
                       sx={{ height: "38px", px: "6px", borderRadius: "6px", gap: "10px" }}
                       className={
                         "transition-colors hover:bg-[--mui-palette-action-hover]" +
                         (popupState.isOpen || pathname.includes(item.pagePath) ? " bg-[--mui-palette-action-hover]" : "")
                       }
-                      {...(item.children ? bindHover(popupState) : {})}
+                      {...(item.children && !!item.children.length ? bindHover(popupState) : {})}
                     >
                       {/* 左侧图标 */}
                       {createElement(customIcons[item.icon] as any, { style: { width: "24px" } })}
@@ -154,7 +161,7 @@ const MenuTabs: React.FC = () => {
                         <></>
                       )}
                       {/* 展开标识符 */}
-                      {item.children ? <ExpandMore /> : <></>}
+                      {item.children && !!item.children.length ? <ExpandMore /> : <></>}
                       {item.description ? (
                         <Tooltip title={item.description}>
                           <InfoIcon sx={{ fontSize: "16px" }} />
@@ -166,7 +173,7 @@ const MenuTabs: React.FC = () => {
                       {item.isLink ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
                     </ButtonBase>
                   </Link>
-                  {item.children ? (
+                  {item.children && !!item.children.length ? (
                     <TabsPopover
                       {...bindPopover(popupState)}
                       anchorOrigin={{
@@ -177,7 +184,7 @@ const MenuTabs: React.FC = () => {
                         vertical: "top",
                         horizontal: "left"
                       }}
-                      menuItems={item.children}
+                      menuitems={item.children}
                       pathname={pathname}
                     />
                   ) : (

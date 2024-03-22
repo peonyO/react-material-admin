@@ -8,3 +8,4 @@ export * from "./Hooks";
 export * from "./MaterialUI";
 export * from "./Router";
 export * from "./Rocket";
+export * from "./Search";
