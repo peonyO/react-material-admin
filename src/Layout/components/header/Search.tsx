@@ -38,7 +38,7 @@ const Search: React.FC<Props> = ({ isShowText = true }) => {
         slots={{ backdrop: Backdrop }}
         slotProps={{
           backdrop: {
-            timeout: 500
+            timeout: 300
           }
         }}
       >
