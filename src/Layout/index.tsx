@@ -6,6 +6,7 @@ import { Stack } from "@mui/material";
 import { useAppConfig } from "@/stores";
 import { useMediaQuery } from "@/material-ui/hooks";
 
+import MenuTabs from "./modules/MenuTabs";
 import Menu from "./modules/Menu";
 import Header from "./modules/Header";
 import Customizer from "./modules/Customizer";
@@ -25,9 +26,11 @@ const Layout: React.FC = () => {
         <div className="relative z-[1] flex-1 overflow-hidden">
           <SimpleBar className="size-full">
             <Header menuMode={menuMode} menuAsideStatus={menuAsideStatus} isMediaLg={isMediaLg} />
+            {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
             <main
               className={
-                "min-h-screen h-screen pt-[88px]" +
+                "min-h-screen relative" +
+                (menuMode === "horizontal" && isMediaLg ? " pt-[138px]" : " pt-[88px]") +
                 (isMediaLg ? " px-[40px]" : " px-[20px]") +
                 (isMediaLg ? " pb-[40px]" : " pb-[20px]")
               }
