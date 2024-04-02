@@ -17,6 +17,7 @@ import LaunchTwoToneIcon from "@mui/icons-material/LaunchTwoTone";
 import { ExpandMore } from "@mui/icons-material";
 
 import { useUserStore } from "@/stores";
+import { getShowMenuList } from "@/routers/helpers/utils";
 import * as Icons from "@/components/Icons";
 
 interface ChildrenMenuItemProps {
@@ -29,7 +30,7 @@ interface ChildrenMenuItemProps {
 
 /** 子级 */
 const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem, isShowDot, hierarchy, pathname }) => {
-  const { icon, title, description, dirPath, children, isHide, isLink, tagInfo, pagePath } = menuItem;
+  const { icon, title, description, dirPath, children, isLink, tagInfo, pagePath } = menuItem;
   const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
   const customIcons: { [key: string]: any } = Icons;
 
@@ -39,14 +40,14 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
   const isSelected = pagePath === pathname;
 
   const handleClickMenu = () => {
-    if (children) {
+    if (children && !!children.length) {
       setIsOpen(!isOpen);
     }
   };
 
-  return !isHide ? (
+  return (
     <li>
-      <Link to={children && !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
+      <Link to={children && !!children.length && !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
         <ListItemButton
           selected={isSelected}
           sx={{
@@ -146,7 +147,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
           {isLink && isSpread ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
         </ListItemButton>
       </Link>
-      {children ? (
+      {children && !!children.length ? (
         <Collapse in={isOpen && isSpread}>
           <List component="ul" disablePadding>
             {children.map(item => {
@@ -167,8 +168,6 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
         <></>
       )}
     </li>
-  ) : (
-    <></>
   );
 };
 
@@ -205,7 +204,7 @@ const MainMenuItem: React.FC<MainMenuItemProps> = ({ menuItem, pathname, isSprea
         <Divider textAlign="left">{isSpread ? menuItem.title : ""}</Divider>
       </ListSubheader>
 
-      {menuItem.children ? (
+      {menuItem.children && !!menuItem.children.length ? (
         <Collapse in={isOpen}>
           <List component="ul" disablePadding>
             {menuItem.children.map(item => {
@@ -228,7 +227,7 @@ const TreeView: React.FC<Props> = ({ isSpread }) => {
   const { pathname } = useLocation();
 
   const userInfo = useUserStore(state => state.userInfo);
-  const menuList: MenuItems[] = userInfo?.menuList || [];
+  const menuList: MenuItems[] = getShowMenuList(userInfo?.menuList || []);
 
   return (
     <List sx={{ width: "100%", py: "0" }}>

@@ -29,7 +29,7 @@ const Layout: React.FC = () => {
             {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
             <main
               className={
-                "min-h-screen" +
+                "min-h-screen relative" +
                 (menuMode === "horizontal" && isMediaLg ? " pt-[138px]" : " pt-[88px]") +
                 (isMediaLg ? " px-[40px]" : " px-[20px]") +
                 (isMediaLg ? " pb-[40px]" : " pb-[20px]")

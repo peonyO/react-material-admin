@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Box, Button } from "@mui/material";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 import Result from "../Result";
 import Header from "./Header";
@@ -19,6 +20,11 @@ const NotAuth: React.FC = () => {
                 返回首页
               </Button>
             </Link>
+          }
+          imageElement={
+            <div className="flex h-[300px] w-full items-center justify-center overflow-hidden">
+              <Player autoplay loop src="/lottie/403.json" className="size-[270px]" />
+            </div>
           }
         ></Result>
       </Box>

@@ -3,6 +3,7 @@ import { ElementType } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 
 interface Props {
+  imageElement?: React.ReactNode;
   components?: ElementType;
   title?: string;
   subTitle?: string;
@@ -10,10 +11,10 @@ interface Props {
   extra?: React.ReactNode;
 }
 
-const Result: React.FC<Props> = ({ components, title, subTitle, imageSrc, extra }) => {
+const Result: React.FC<Props> = ({ imageElement, components, title, subTitle, imageSrc, extra }) => {
   return (
     <Container component={components || "main"}>
-      <Stack textAlign="center" maxWidth="400px" mx="auto">
+      <Stack textAlign="center" mx="auto">
         <Box>
           <Typography component={"h3"} fontWeight="bold" fontSize="28px" mb="16px">
             {title}
@@ -21,7 +22,11 @@ const Result: React.FC<Props> = ({ components, title, subTitle, imageSrc, extra 
           <Typography component={"p"} fontSize="16px" lineHeight="1.5">
             {subTitle}
           </Typography>
-          <Typography component={"img"} src={imageSrc} width="400px" mx="auto" my="40px"></Typography>
+          {imageElement ? (
+            imageElement
+          ) : (
+            <Typography component={"img"} src={imageSrc} width="400px" mx="auto" my="40px"></Typography>
+          )}
           {extra}
         </Box>
       </Stack>

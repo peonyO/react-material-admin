@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import "./styles/app.css";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const AppLoading: React.FC = () => {
   return (
-    <Box height="100%">
-      <div className="loader"></div>
+    <Box height="100%" display="flex" justifyContent="center" alignItems="center">
+      <Player autoplay loop src="/lottie/appLoading.json" className="w-full" />
     </Box>
   );
 };
