@@ -72,7 +72,7 @@ const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
     >
       <div
         className={
-          "flex flex-col size-full overflow-hidden bg-[--mui-palette-background-default] transition-[box-shadow,width] duration-300" +
+          "will-change-auto flex flex-col size-full overflow-hidden bg-[--mui-palette-background-default] transition-[box-shadow,width] duration-300" +
           (isShowMenuDetail ? " w-[260px]" : "") +
           (isHovering ? " shadow-lg" : "")
         }

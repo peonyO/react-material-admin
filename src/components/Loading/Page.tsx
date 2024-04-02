@@ -15,7 +15,7 @@ const PageLoading: React.FC = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Player autoplay loop src="/lottie/pageLoading.json" className="size-[150px]" />
+      <Player autoplay loop speed={2} src="/lottie/pageLoading.json" className="size-[150px]" />
     </Box>
   );
 };

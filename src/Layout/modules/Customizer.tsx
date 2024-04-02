@@ -20,7 +20,7 @@ const Customizer: React.FC = () => {
   return (
     <div
       className={
-        "flex flex-col fixed right-0 h-full w-[300px] backdrop-blur-[6px] top-0 transition-[box-shadow,right] duration-300 ease-in-out z-[2]" +
+        "will-change-auto flex flex-col fixed right-0 h-full w-[300px] backdrop-blur-[6px] top-0 transition-[box-shadow,right] duration-300 ease-in-out z-[2]" +
         (isOpen ? " right-0 shadow-xl" : " right-[-300px]")
       }
       style={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
