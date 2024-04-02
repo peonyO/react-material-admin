@@ -23,7 +23,7 @@ const NotFound: React.FC = () => {
           }
           imageElement={
             <div className="flex h-[300px] w-full items-center justify-center overflow-hidden">
-              <Player autoplay loop src="/lottie/404.json" className="size-[500px]" />
+              <Player autoplay loop src="/lottie/404.json" className="relative left-[-10px] size-[500px]" />
             </div>
           }
         ></Result>
