@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import { Backdrop, Box, IconButton, Modal, Stack, Typography, Zoom } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { Search as SearchIcon } from "@/components/Icons/Search";
-
 interface Props {
   isShowText?: boolean;
 }
@@ -45,6 +45,7 @@ const Search: React.FC<Props> = ({ isShowText = true }) => {
         <Zoom in={open}>
           <Box
             sx={{
+              width: "600px",
               position: "absolute",
               top: "50%",
               left: "50%",
@@ -53,7 +54,14 @@ const Search: React.FC<Props> = ({ isShowText = true }) => {
               boxShadow: 24,
               borderRadius: "8px"
             }}
-          ></Box>
+          >
+            <Stack direction="row" p="16px" alignItems="center" justifyContent="space-between" gap="8px" className="border-b">
+              <SearchIcon fontSize="25px" />
+              <input className="flex-1 text-[20px] outline-none" />
+              <Typography component="div">[esc]</Typography>
+              <CloseIcon />
+            </Stack>
+          </Box>
         </Zoom>
       </Modal>
     </>
