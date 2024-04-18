@@ -71,7 +71,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
                 color: isSelected ? "var(--mui-palette-primary-main)" : "var(--mui-palette-text-primary)"
               }}
             >
-              {createElement(customIcons[icon] as any, { style: { width: "24px" } })}
+              {customIcons[icon] && createElement(customIcons[icon] as any, { style: { width: "24px" } })}
             </ListItemIcon>
           ) : isShowDot ? (
             <ListItemIcon
@@ -128,23 +128,29 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
               className: "line-clamp-1"
             }}
           />
-          {isSpread && tagInfo ? (
-            <Chip
-              color={tagInfo.color}
-              label={tagInfo.text}
-              icon={tagInfo.icon ? createElement(customIcons[tagInfo.icon] as any, { style: { fontSize: "16px" } }) : undefined}
-            ></Chip>
-          ) : (
-            <></>
-          )}
-          {/* 展开标识符 */}
-          {children && isSpread ? (
-            <ExpandMore className={"transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")} />
-          ) : (
-            <></>
-          )}
-          {/* 标识是否是外部链接 */}
-          {isLink && isSpread ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
+          <div className="flex items-center gap-[2px]">
+            {isSpread && tagInfo ? (
+              <Chip
+                color={tagInfo.color}
+                label={tagInfo.text}
+                icon={
+                  tagInfo.icon && customIcons[tagInfo.icon]
+                    ? createElement(customIcons[tagInfo.icon] as any, { style: { fontSize: "16px" } })
+                    : undefined
+                }
+              ></Chip>
+            ) : (
+              <></>
+            )}
+            {/* 展开标识符 */}
+            {children && isSpread ? (
+              <ExpandMore className={"transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")} />
+            ) : (
+              <></>
+            )}
+            {/* 标识是否是外部链接 */}
+            {isLink && isSpread ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
+          </div>
         </ListItemButton>
       </Link>
       {children && !!children.length ? (

@@ -55,7 +55,7 @@ const TabsPopover: React.FC<TabsPopoverProps> = props => {
                         color={item.tagInfo.color}
                         label={item.tagInfo.text}
                         icon={
-                          item.tagInfo.icon
+                          item.tagInfo.icon && customIcons[item.tagInfo.icon]
                             ? createElement(customIcons[item.tagInfo.icon] as any, { style: { fontSize: "16px" } })
                             : undefined
                         }
@@ -137,7 +137,7 @@ const MenuTabs: React.FC = () => {
                       {...(item.children && !!item.children.length ? bindHover(popupState) : {})}
                     >
                       {/* 左侧图标 */}
-                      {createElement(customIcons[item.icon] as any, { style: { width: "24px" } })}
+                      {customIcons[item.icon] && createElement(customIcons[item.icon] as any, { style: { width: "24px" } })}
                       {/* 标题 */}
                       <Typography
                         component="span"
@@ -152,7 +152,7 @@ const MenuTabs: React.FC = () => {
                           color={item.tagInfo.color}
                           label={item.tagInfo.text}
                           icon={
-                            item.tagInfo.icon
+                            item.tagInfo.icon && customIcons[item.tagInfo.icon]
                               ? createElement(customIcons[item.tagInfo.icon] as any, { style: { fontSize: "16px" } })
                               : undefined
                           }

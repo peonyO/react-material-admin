@@ -1,10 +1,10 @@
 import { useOutlet } from "react-router-dom";
 
-import SimpleBar from "simplebar-react";
 import { Stack } from "@mui/material";
 
 import { useAppConfig } from "@/stores";
 import { useMediaQuery } from "@/material-ui/hooks";
+import ScrollBar from "@/components/ScrollBar";
 
 import MenuTabs from "./modules/MenuTabs";
 import Menu from "./modules/Menu";
@@ -24,7 +24,7 @@ const Layout: React.FC = () => {
       <Stack flex="1" direction="row" overflow="hidden">
         {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
         <div className="relative z-[1] flex-1 overflow-hidden">
-          <SimpleBar className="size-full">
+          <ScrollBar className="size-full">
             <Header menuMode={menuMode} menuAsideStatus={menuAsideStatus} isMediaLg={isMediaLg} />
             {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
             <main
@@ -37,7 +37,7 @@ const Layout: React.FC = () => {
             >
               {outlet}
             </main>
-          </SimpleBar>
+          </ScrollBar>
         </div>
       </Stack>
 

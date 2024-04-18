@@ -43,25 +43,27 @@ const Search: React.FC<Props> = ({ isShowText = true }) => {
         }}
       >
         <Zoom in={open}>
-          <Box
-            sx={{
-              width: "600px",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              bgcolor: "background.paper",
-              boxShadow: 24,
-              borderRadius: "8px"
-            }}
-          >
-            <Stack direction="row" p="16px" alignItems="center" justifyContent="space-between" gap="8px" className="border-b">
-              <SearchIcon fontSize="25px" />
-              <input className="flex-1 text-[20px] outline-none" />
-              <Typography component="div">[esc]</Typography>
-              <CloseIcon />
-            </Stack>
-          </Box>
+          <div className="size-full">
+            <Box
+              sx={{
+                width: "600px",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                bgcolor: "background.paper",
+                boxShadow: 24,
+                borderRadius: "8px"
+              }}
+            >
+              <Stack direction="row" p="16px" alignItems="center" justifyContent="space-between" gap="8px" className="border-b">
+                <SearchIcon fontSize="25px" />
+                <input className="flex-1 text-[20px] outline-none" />
+                <Typography component="div">[esc]</Typography>
+                <CloseIcon />
+              </Stack>
+            </Box>
+          </div>
         </Zoom>
       </Modal>
     </>
