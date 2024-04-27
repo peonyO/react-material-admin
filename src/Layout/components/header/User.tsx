@@ -1,7 +1,18 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { Avatar, Badge, Box, Button, Divider, IconButton, Popover, Stack, Typography, styled } from "@mui/material";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Popover,
+  Stack,
+  Typography,
+  styled
+} from "@mui/material";
 
 import { removeStorage } from "@/utils";
 import { useUserStore } from "@/stores";
@@ -69,7 +80,11 @@ const User: React.FC = () => {
   return (
     <>
       <IconButton sx={{ padding: 0 }} onClick={openUserInfo}>
-        <StyledBadge overlap="circular" anchorOrigin={{ vertical: "bottom", horizontal: "right" }} variant="dot">
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          variant="dot"
+        >
           <Avatar src={avatar} sx={{ width: "32px", height: "32px" }} />
         </StyledBadge>
       </IconButton>

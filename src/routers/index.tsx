@@ -1,4 +1,10 @@
-import { RouterProvider as Router, type RouteObject, createHashRouter, createBrowserRouter, Navigate } from "react-router-dom";
+import {
+  RouterProvider as Router,
+  type RouteObject,
+  createHashRouter,
+  createBrowserRouter,
+  Navigate
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { useUserStore } from "@/stores";
@@ -20,7 +26,6 @@ const RouterProvider: React.FC = () => {
   const [routerList, setRouterList] = useState<RouteObject[]>(wrappedStaticRouter);
 
   useEffect(() => {
-    console.log(userInfo);
     // 刷新页面时，没有菜单数据
     if (!userInfo) {
       initPermissions();

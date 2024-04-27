@@ -22,7 +22,7 @@ export const wrappedStaticRouter: RouteObject[] = [
       /** 如果有用户信息跳转首页 */
       const tokenInfo = getStorage("tokenInfo");
       if (tokenInfo) {
-        return redirect("/");
+        return redirect("/dashboards");
       } else {
         return {
           title: "登录"

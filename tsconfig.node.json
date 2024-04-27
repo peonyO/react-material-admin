@@ -7,10 +7,5 @@
     "allowSyntheticDefaultImports": true,
     "strict": true
   },
-  "include": [
-    "src/**/*.d.ts",
-    "vitePlugs/**/*.ts",
-    "vitePlugs/**/*.d.ts",
-    "vite.config.ts"
-  ]
+  "include": ["src/**/*.d.ts", "config/**/*.ts", "config/**/*.d.ts", "vite.config.ts"]
 }

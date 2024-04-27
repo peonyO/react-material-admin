@@ -1,6 +1,10 @@
 import { useMemo } from "react";
 
-import { PaletteColorChannel, PaletteColorOptions, experimental_extendTheme as extendTheme } from "@mui/material/styles";
+import {
+  PaletteColorChannel,
+  PaletteColorOptions,
+  experimental_extendTheme as extendTheme
+} from "@mui/material/styles";
 
 import { useAppConfig } from "@/stores";
 import redImage from "@/assets/images/popover/red-blur.png";
