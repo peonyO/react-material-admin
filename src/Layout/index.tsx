@@ -29,8 +29,7 @@ const Layout: React.FC = () => {
             {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
             <main
               className={
-                "min-h-screen relative" +
-                (menuMode === "horizontal" && isMediaLg ? " pt-[138px]" : " pt-[88px]") +
+                "relative pt-[20px]" +
                 (isMediaLg ? " px-[40px]" : " px-[20px]") +
                 (isMediaLg ? " pb-[40px]" : " pb-[20px]")
               }
@@ -40,7 +39,6 @@ const Layout: React.FC = () => {
           </ScrollBar>
         </div>
       </Stack>
-
       {isMediaLg ? <Customizer /> : <></>}
     </>
   );

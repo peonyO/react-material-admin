@@ -1,0 +1,3 @@
+.scrollbar {
+  scrollbar-color: rgba(var(--mui-palette-primary-mainChannel) / 50%) transparent;
+}

@@ -5,7 +5,7 @@ import AuthButton from "@/components/AuthButton";
 const Home: React.FC = () => {
   return (
     <div className="h-[1000px] flex-1">
-      <div className="mt-[10px]">
+      <div>
         <p className="text-lg font-bold">按钮权限校验</p>
         <AuthButton authority="dashboard_add">
           <Button>首页新增</Button>

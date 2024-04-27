@@ -27,6 +27,7 @@
 }
 
 * {
+  margin: 0;
   border-color: var(--mui-palette-divider);
   border-style: solid;
   border-width: 0;
