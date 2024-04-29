@@ -13,7 +13,7 @@ import { usePermissions } from "@/hooks";
 import { wrappedStaticRouter } from "./modules/StaticRouter";
 import { convertToDynamicRouterFormat } from "./modules/ConvertRouter";
 
-const mode = import.meta.env.VITE_ROUTER_MODE;
+const mode = import.meta.env.VITE_ROUTER_MODE || "history";
 
 /**
  * @description 路由入口文件

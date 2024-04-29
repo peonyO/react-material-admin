@@ -29,6 +29,10 @@ const RouterGuard: React.FC<RouterGuardProps> = props => {
     // 是否登录页面
     const isLoginPage = pathname === "/login";
 
+    if (tokenInfo && isLoginPage) {
+      return navigate("/", { replace: true });
+    }
+
     // 如果没有令牌，重定向到登录页面
     if (!tokenInfo && !isLoginPage) {
       return navigate("/login", { replace: true });
