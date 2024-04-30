@@ -20,27 +20,23 @@ const Layout: React.FC = () => {
   const isMediaLg = useMediaQuery("lg");
 
   return (
-    <>
-      <Stack flex="1" direction="row" overflow="hidden">
-        {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
-        <div className="relative z-[1] flex-1 overflow-hidden">
-          <ScrollBar className="size-full">
-            <Header menuMode={menuMode} menuAsideStatus={menuAsideStatus} isMediaLg={isMediaLg} />
-            {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
-            <main
-              className={
-                "relative pt-[20px]" +
-                (isMediaLg ? " px-[40px]" : " px-[20px]") +
-                (isMediaLg ? " pb-[40px]" : " pb-[20px]")
-              }
-            >
-              {outlet}
-            </main>
-          </ScrollBar>
-        </div>
-      </Stack>
+    <Stack flex="1" direction="row" overflow="hidden">
+      {menuMode === "vertical" && isMediaLg ? <Menu menuAsideStatus={menuAsideStatus} /> : <></>}
+      <div className="relative z-[1] flex-1 overflow-hidden">
+        <ScrollBar className="flex size-full flex-col">
+          <Header menuMode={menuMode} menuAsideStatus={menuAsideStatus} isMediaLg={isMediaLg} />
+          {menuMode === "horizontal" && isMediaLg ? <MenuTabs /> : <></>}
+          <main
+            className={
+              "relative pt-[20px] flex-1" + (isMediaLg ? " px-[40px] pb-[40px]" : " px-[20px] pb-[20px]")
+            }
+          >
+            {outlet}
+          </main>
+        </ScrollBar>
+      </div>
       {isMediaLg ? <Customizer /> : <></>}
-    </>
+    </Stack>
   );
 };
 
