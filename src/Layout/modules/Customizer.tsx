@@ -1,10 +1,10 @@
 import { memo, useState } from "react";
 
-import SimpleBar from "simplebar-react";
 import { Chip, Stack, Typography, ButtonBase, Divider, Switch } from "@mui/material";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
 import { useAppConfig } from "@/stores";
+import ScrollBar from "@/components/ScrollBar";
 import { SolarSettingsBoldDuotone } from "@/components/Icons";
 
 import SettingLayout from "../components/customizer/SettingLayout";
@@ -41,12 +41,15 @@ const Customizer: React.FC = () => {
           </Typography>
         </Stack>
         <Stack>
-          <CloseTwoToneIcon className="cursor-pointer text-[--mui-palette-action-active]" onClick={() => changeOpen(false)} />
+          <CloseTwoToneIcon
+            className="cursor-pointer text-[--mui-palette-action-active]"
+            onClick={() => changeOpen(false)}
+          />
         </Stack>
       </Stack>
       {/* 设置中心 */}
       <div className="flex-1 overflow-hidden">
-        <SimpleBar className="h-full">
+        <ScrollBar className="h-full">
           <div className="p-[20px]">
             <div className="grid gap-[20px]">
               <div>
@@ -77,7 +80,7 @@ const Customizer: React.FC = () => {
               </Stack>
             </div>
           </div>
-        </SimpleBar>
+        </ScrollBar>
       </div>
       {/* 打开\关闭 设置中心 按钮 */}
       <ButtonBase

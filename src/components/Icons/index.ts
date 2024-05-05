@@ -10,3 +10,6 @@ export * from "./Router";
 export * from "./Rocket";
 export * from "./Search";
 export * from "./Game";
+export * from "./Iconify";
+export * from "./Table";
+export * from "./Components";

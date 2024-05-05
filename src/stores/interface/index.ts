@@ -27,13 +27,3 @@ export interface AppConfigAction {
   setGrayMode: (isGray: boolean) => void;
 }
 //#endregion
-
-//#region AuthState
-export interface AuthState {
-  authButtonList: string[];
-}
-
-export interface AuthAction {
-  setAuthButtonList: (authButtonList: AuthState["authButtonList"]) => void;
-}
-//#endregion

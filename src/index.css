@@ -47,7 +47,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-.simplebar-scrollbar::before {
-  background-color: var(--mui-palette-primary-main) !important;
-}

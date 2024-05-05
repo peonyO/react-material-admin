@@ -23,9 +23,11 @@ declare interface MenuItems {
   children?: MenuItems[];
 }
 
+declare type AuthButtonItems = "dashboard_add" | "dashboard_edit" | "dashboard_delete";
 declare interface UserInfo {
   nickname: string;
   menuList: MenuItems[];
+  buttonList: AuthButtonItems[];
 }
 //#endregion
 

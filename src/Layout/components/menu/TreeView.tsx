@@ -29,7 +29,13 @@ interface ChildrenMenuItemProps {
 }
 
 /** 子级 */
-const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem, isShowDot, hierarchy, pathname }) => {
+const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({
+  isSpread,
+  menuItem,
+  isShowDot,
+  hierarchy,
+  pathname
+}) => {
   const { icon, title, description, dirPath, children, isLink, tagInfo, pagePath } = menuItem;
   const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
   const customIcons: { [key: string]: any } = Icons;
@@ -47,7 +53,10 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
 
   return (
     <li>
-      <Link to={children && !!children.length && !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
+      <Link
+        to={children && !!children.length && !dirPath ? "#" : pagePath}
+        target={isLink ? "_blank" : undefined}
+      >
         <ListItemButton
           selected={isSelected}
           sx={{
@@ -86,7 +95,9 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
               <div
                 className={
                   "rounded-full transition-all" +
-                  (isSelected ? " size-[8px] bg-[--mui-palette-primary-main]" : " size-[4px] bg-[--mui-palette-text-primary]")
+                  (isSelected
+                    ? " size-[8px] bg-[--mui-palette-primary-main]"
+                    : " size-[4px] bg-[--mui-palette-text-primary]")
                 }
               ></div>
             </ListItemIcon>
@@ -144,7 +155,11 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
             )}
             {/* 展开标识符 */}
             {children && isSpread ? (
-              <ExpandMore className={"transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")} />
+              <ExpandMore
+                className={
+                  "transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")
+                }
+              />
             ) : (
               <></>
             )}
@@ -214,7 +229,9 @@ const MainMenuItem: React.FC<MainMenuItemProps> = ({ menuItem, pathname, isSprea
         <Collapse in={isOpen}>
           <List component="ul" disablePadding>
             {menuItem.children.map(item => {
-              return <ChildrenMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />;
+              return (
+                <ChildrenMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />
+              );
             })}
           </List>
         </Collapse>
@@ -236,7 +253,7 @@ const TreeView: React.FC<Props> = ({ isSpread }) => {
   const menuList: MenuItems[] = getShowMenuList(userInfo?.menuList || []);
 
   return (
-    <List sx={{ width: "100%", py: "0" }}>
+    <List sx={{ width: "100%", py: "0", height: "1000px" }}>
       {menuList.map(item => {
         return <MainMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />;
       })}
