@@ -101,7 +101,15 @@ const SettingLayout: React.FC = () => {
       </Stack>
     </>,
     <>
-      <Stack width="100%" height="16px" p="4px" gap="4px" direction="row" alignItems="center" sx={{ borderBottomWidth: "1px" }}>
+      <Stack
+        width="100%"
+        height="16px"
+        p="4px"
+        gap="4px"
+        direction="row"
+        alignItems="center"
+        sx={{ borderBottomWidth: "1px" }}
+      >
         <Box
           className="size-[8px] rounded-[4px]"
           style={{
@@ -143,7 +151,10 @@ const SettingLayout: React.FC = () => {
         return (
           <ButtonBase
             key={index}
-            sx={{ border: "1px solid var(--mui-palette-divider)", flexDirection: index === 2 ? "column" : "row" }}
+            sx={{
+              border: "1px solid var(--mui-palette-divider)",
+              flexDirection: index === 2 ? "column" : "row"
+            }}
             className="h-[56px] rounded-[8px]"
             onClick={() => changeMenuMode(index)}
           >

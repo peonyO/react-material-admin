@@ -49,7 +49,8 @@ export const useTheme = () => {
             text: {
               primary: "rgb(46 38 61 / 0.9)",
               secondary: "rgb(46 38 61 / 0.7)",
-              disabled: "rgb(46 38 61 / 0.4)"
+              disabled: "rgb(46 38 61 / 0.4)",
+              primaryChannel: "46 38 61"
             },
             background: {
               default: "#F4F5FA"
@@ -65,7 +66,8 @@ export const useTheme = () => {
             text: {
               primary: "rgb(231 227 252 / 0.9)",
               secondary: "rgb(231 227 252 / 0.7)",
-              disabled: "rgb(231 227 252 / 0.4)"
+              disabled: "rgb(231 227 252 / 0.4)",
+              primaryChannel: "231 227 252"
             },
             background: {
               default: "#28243D",

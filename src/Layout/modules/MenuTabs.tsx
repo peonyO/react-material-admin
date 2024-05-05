@@ -123,7 +123,7 @@ const MenuTabs: React.FC = () => {
 
   return (
     <div
-      className="fixed top-[64px] z-[--mui-zIndex-appBar] h-[64px] w-full backdrop-blur-[6px]"
+      className="sticky top-[64px] z-[--mui-zIndex-appBar] h-[64px] w-full border-t border-[rgb(var(--mui-palette-text-primaryChannel)/10%)] backdrop-blur-[6px]"
       style={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
     >
       <ScrollBar className="size-full">
@@ -131,7 +131,7 @@ const MenuTabs: React.FC = () => {
           component="nav"
           display="inline-flex"
           direction="row"
-          sx={{ height: "64px", px: "20px", alignItems: "center", gap: "6px" }}
+          sx={{ height: "63px", px: "20px", alignItems: "center", gap: "6px" }}
         >
           {menuList.map(item => (
             <PopupState key={item.id} variant="popover" popupId={item.id}>

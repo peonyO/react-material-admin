@@ -13,3 +13,5 @@ export * from "./Game";
 export * from "./Iconify";
 export * from "./Table";
 export * from "./Components";
+export * from "./Data";
+export * from "./Form";

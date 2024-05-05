@@ -37,7 +37,7 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({
   pathname
 }) => {
   const { icon, title, description, dirPath, children, isLink, tagInfo, pagePath } = menuItem;
-  const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
+  const [isOpen, setIsOpen] = useState(!!(pathname.includes(pagePath) && children && !!children.length));
   const customIcons: { [key: string]: any } = Icons;
 
   const currentHierarchy = hierarchy ? hierarchy + 1 : 1;
