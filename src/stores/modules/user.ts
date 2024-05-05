@@ -2,9 +2,9 @@ import { create } from "zustand";
 
 import { UserAction, UserState } from "@/stores/interface";
 
-export type UserStoreState = UserState & UserAction;
+export type UserStore = UserState & UserAction;
 
-export const useUserStore = create<UserStoreState>()(set => ({
+export const useUserStore = create<UserStore>()(set => ({
   userInfo: null,
   setUserInfo: userInfo => set({ userInfo })
 }));

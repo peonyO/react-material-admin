@@ -87,17 +87,19 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({
               sx={{
                 pr: isSpread ? "16px" : "0",
                 minWidth: "40px",
+                height: "10px",
                 pt: "1px",
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
+                alignItems: "center"
               }}
             >
               <div
                 className={
-                  "rounded-full transition-all" +
+                  "rounded-full transition-all size-[4px]" +
                   (isSelected
-                    ? " size-[8px] bg-[--mui-palette-primary-main]"
-                    : " size-[4px] bg-[--mui-palette-text-primary]")
+                    ? " scale-[2] bg-[--mui-palette-primary-main]"
+                    : " bg-[--mui-palette-text-primary]")
                 }
               ></div>
             </ListItemIcon>
