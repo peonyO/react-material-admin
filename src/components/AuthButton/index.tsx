@@ -1,15 +1,15 @@
 import { Fragment, memo } from "react";
 
-import { useAuthStore } from "@/stores";
+import { useUserStore } from "@/stores";
 
 type AuthButtonProps = {
-  authority: string;
+  authority: AuthButtonItems;
   children: React.ReactNode;
 };
 
 const AuthButton: React.FC<AuthButtonProps> = ({ authority, children }) => {
-  const authButtonList = useAuthStore(state => state.authButtonList);
-  const auth = authority ? authButtonList?.includes(authority) : authority;
+  const userInfo = useUserStore(state => state.userInfo);
+  const auth = authority ? userInfo?.buttonList.includes(authority) : authority;
 
   return <Fragment>{auth && children}</Fragment>;
 };

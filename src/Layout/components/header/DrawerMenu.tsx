@@ -8,7 +8,7 @@ export interface DrawerMenuRefs {
   openMenu: () => void;
 }
 
-const DrawerMenu: React.ForwardRefExoticComponent<React.RefAttributes<DrawerMenuRefs>> = forwardRef((_, ref) => {
+const DrawerMenu = forwardRef<DrawerMenuRefs>((_, ref) => {
   useImperativeHandle(ref, () => {
     return {
       openMenu: () => {

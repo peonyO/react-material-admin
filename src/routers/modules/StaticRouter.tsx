@@ -1,8 +1,7 @@
-import { Navigate, redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 import { lazy } from "react";
 
-import { getStorage } from "@/utils";
 import AppLoading from "@/components/Loading/App";
 
 import LazyCmp from "./LazyCmp";
@@ -13,21 +12,15 @@ import LazyCmp from "./LazyCmp";
 export const wrappedStaticRouter: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/dashboards/home" replace />
+    element: <Navigate to="/dashboards" replace />
   },
   {
     path: "/login",
     element: <LazyCmp loading={<AppLoading />} Lazy={lazy(() => import("@/pages/Login"))} />,
     loader: () => {
-      /** 如果有用户信息跳转首页 */
-      const tokenInfo = getStorage("tokenInfo");
-      if (tokenInfo) {
-        return redirect("/");
-      } else {
-        return {
-          title: "登录"
-        };
-      }
+      return {
+        title: "登录"
+      };
     }
   },
   {

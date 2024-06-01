@@ -1,10 +1,8 @@
-import { memo, useCallback, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 
-import SimpleBar from "simplebar-react";
-import SimpleBarCore from "simplebar-core";
 import { Box } from "@mui/material";
 
-import { useSimpleBarScroll } from "@/hooks";
+import ScrollBar from "@/components/ScrollBar";
 
 import TreeView from "../components/menu/TreeView";
 import Tack from "../components/menu/Tack";
@@ -53,16 +51,16 @@ const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
   }, [menuAsideStatus, isHovering]);
 
   /** 监听滚动条滚动 */
-  const simpleBarRef = useRef<SimpleBarCore>(null);
   const [isShowMask, setShowMask] = useState(false);
 
-  useSimpleBarScroll(simpleBarRef, $event => {
-    if (($event.target as HTMLElement)?.scrollTop && !isShowMask) {
+  const handleScroll = ($event: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = $event.currentTarget.scrollTop;
+    if (scrollTop && !isShowMask) {
       setShowMask(true);
     } else {
       setShowMask(false);
     }
-  });
+  };
 
   return (
     <aside
@@ -93,9 +91,9 @@ const Menu: React.FC<Props> = ({ menuAsideStatus, isShowTask = true }) => {
           }
         ></div>
         <div className="flex-1 overflow-hidden">
-          <SimpleBar ref={simpleBarRef} className="h-full">
+          <ScrollBar className="h-full" onScroll={handleScroll}>
             <TreeView isSpread={isShowMenuDetail} />
-          </SimpleBar>
+          </ScrollBar>
         </div>
       </div>
     </aside>

@@ -2,7 +2,11 @@ import { memo } from "react";
 
 import { ButtonBase, Typography, useColorScheme } from "@mui/material";
 
-import { IconParkTwotoneSunOne, SolarCloudyMoonBoldDuotone, FluentDesktopSync16Filled } from "@/components/Icons";
+import {
+  IconParkTwotoneSunOne,
+  SolarCloudyMoonBoldDuotone,
+  FluentDesktopSync16Filled
+} from "@/components/Icons";
 
 /** 模式 */
 const modeList = [

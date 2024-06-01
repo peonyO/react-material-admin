@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { createElement, useMemo } from "react";
 
-import SimpleBar from "simplebar-react";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
 import PopupState, { bindHover, bindPopover } from "material-ui-popup-state";
 import { ButtonBase, Chip, PopoverProps, Stack, Tooltip, Typography } from "@mui/material";
@@ -11,6 +10,7 @@ import { ExpandMore } from "@mui/icons-material";
 
 import { useUserStore } from "@/stores";
 import { getShowMenuList } from "@/routers/helpers/utils";
+import ScrollBar from "@/components/ScrollBar";
 import * as Icons from "@/components/Icons";
 
 interface TabsPopoverProps extends PopoverProps {
@@ -35,17 +35,28 @@ const TabsPopover: React.FC<TabsPopoverProps> = props => {
                 >
                   <ButtonBase
                     {...(item.children && !!item.children.length ? bindHover(popupState) : {})}
-                    sx={{ px: "8px", borderRadius: "6px", width: "152px", height: "34px", justifyContent: "space-between" }}
+                    sx={{
+                      px: "8px",
+                      borderRadius: "6px",
+                      width: "152px",
+                      height: "34px",
+                      justifyContent: "space-between"
+                    }}
                     className={
                       "transition-colors hover:bg-[--mui-palette-action-hover]" +
-                      (popupState.isOpen || pathname.includes(item.pagePath) ? " bg-[--mui-palette-action-hover]" : "")
+                      (popupState.isOpen || pathname.includes(item.pagePath)
+                        ? " bg-[--mui-palette-action-hover]"
+                        : "")
                     }
                   >
                     {/* 标题 */}
                     <Typography
                       component="span"
                       sx={{ whiteSpace: "nowrap", fontSize: "0.875rem" }}
-                      className={"line-clamp-1" + (popupState.isOpen || pathname.includes(item.pagePath) ? " font-bold" : "")}
+                      className={
+                        "line-clamp-1" +
+                        (popupState.isOpen || pathname.includes(item.pagePath) ? " font-bold" : "")
+                      }
                     >
                       {item.title}
                     </Typography>
@@ -55,8 +66,10 @@ const TabsPopover: React.FC<TabsPopoverProps> = props => {
                         color={item.tagInfo.color}
                         label={item.tagInfo.text}
                         icon={
-                          item.tagInfo.icon
-                            ? createElement(customIcons[item.tagInfo.icon] as any, { style: { fontSize: "16px" } })
+                          item.tagInfo.icon && customIcons[item.tagInfo.icon]
+                            ? createElement(customIcons[item.tagInfo.icon] as any, {
+                                style: { fontSize: "16px" }
+                              })
                             : undefined
                         }
                       ></Chip>
@@ -110,15 +123,15 @@ const MenuTabs: React.FC = () => {
 
   return (
     <div
-      className="fixed top-[64px] z-[--mui-zIndex-appBar] h-[64px] w-full backdrop-blur-[6px]"
+      className="sticky top-[64px] z-[--mui-zIndex-appBar] h-[64px] w-full border-t border-[rgb(var(--mui-palette-text-primaryChannel)/10%)] backdrop-blur-[6px]"
       style={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
     >
-      <SimpleBar className="size-full">
+      <ScrollBar className="size-full">
         <Stack
           component="nav"
           display="inline-flex"
           direction="row"
-          sx={{ height: "64px", px: "20px", alignItems: "center", gap: "6px" }}
+          sx={{ height: "63px", px: "20px", alignItems: "center", gap: "6px" }}
         >
           {menuList.map(item => (
             <PopupState key={item.id} variant="popover" popupId={item.id}>
@@ -132,12 +145,15 @@ const MenuTabs: React.FC = () => {
                       sx={{ height: "38px", px: "6px", borderRadius: "6px", gap: "10px" }}
                       className={
                         "transition-colors hover:bg-[--mui-palette-action-hover]" +
-                        (popupState.isOpen || pathname.includes(item.pagePath) ? " bg-[--mui-palette-action-hover]" : "")
+                        (popupState.isOpen || pathname.includes(item.pagePath)
+                          ? " bg-[--mui-palette-action-hover]"
+                          : "")
                       }
                       {...(item.children && !!item.children.length ? bindHover(popupState) : {})}
                     >
                       {/* 左侧图标 */}
-                      {createElement(customIcons[item.icon] as any, { style: { width: "24px" } })}
+                      {customIcons[item.icon] &&
+                        createElement(customIcons[item.icon] as any, { style: { width: "24px" } })}
                       {/* 标题 */}
                       <Typography
                         component="span"
@@ -152,8 +168,10 @@ const MenuTabs: React.FC = () => {
                           color={item.tagInfo.color}
                           label={item.tagInfo.text}
                           icon={
-                            item.tagInfo.icon
-                              ? createElement(customIcons[item.tagInfo.icon] as any, { style: { fontSize: "16px" } })
+                            item.tagInfo.icon && customIcons[item.tagInfo.icon]
+                              ? createElement(customIcons[item.tagInfo.icon] as any, {
+                                  style: { fontSize: "16px" }
+                                })
                               : undefined
                           }
                         ></Chip>
@@ -195,7 +213,7 @@ const MenuTabs: React.FC = () => {
             </PopupState>
           ))}
         </Stack>
-      </SimpleBar>
+      </ScrollBar>
     </div>
   );
 };

@@ -67,7 +67,10 @@ const Login: React.FC = () => {
       >
         登录后台管理系统
       </Typography>
-      <Alert icon={<InfoIcon sx={{ color: "#00b8d9" }} />} sx={{ color: "#003768", backgroundColor: "#cafdf5" }}>
+      <Alert
+        icon={<InfoIcon sx={{ color: "#00b8d9" }} />}
+        sx={{ color: "#003768", backgroundColor: "#cafdf5" }}
+      >
         <Typography component={"p"} fontSize={"14px"}>
           账号：<strong>admin/user</strong>
         </Typography>
@@ -110,7 +113,13 @@ const Login: React.FC = () => {
                 />
               )}
             />
-            <LoadingButton type="submit" variant="contained" size="large" loading={loginLoading} className="h-[48px]">
+            <LoadingButton
+              type="submit"
+              variant="contained"
+              size="large"
+              loading={loginLoading}
+              className="h-[48px]"
+            >
               <span>登录</span>
             </LoadingButton>
           </Stack>

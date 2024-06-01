@@ -2,7 +2,7 @@
 
 module.exports = {
   // Specifies the maximum line break length
-  printWidth: 130,
+  printWidth: 110,
   // Tab width in either tab characters or spaces
   tabWidth: 2,
   // Use tabs for indentation (true: tabs, false: spaces)

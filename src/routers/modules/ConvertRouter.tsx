@@ -8,7 +8,10 @@ import { getFlatMenuList } from "../helpers/utils";
 import LazyCmp from "./LazyCmp";
 
 // 导入views目录中的所有视图文件
-const modules = import.meta.glob("@/pages/**/*.tsx") as Record<string, Parameters<typeof lazy<React.FC>>[number]>;
+const modules = import.meta.glob("@/pages/**/*.tsx") as Record<
+  string,
+  Parameters<typeof lazy<React.FC>>[number]
+>;
 
 /**
  * @description 将menuList转换为react-router所需的格式

@@ -2,7 +2,7 @@ import { enqueueSnackbar } from "notistack";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 
 import { getStorage, removeStorage } from "@/utils";
-import { ResultEnum } from "@/enums/httpEnum";
+import { ResultEnum } from "@/enums/http";
 
 import {
   CustomAxiosRequestConfig,
@@ -73,7 +73,8 @@ class RequestHttp {
       async (error: AxiosError) => {
         const { response } = error;
         tryHideFullScreenLoading();
-        if (error.message.indexOf("timeout") !== -1) enqueueSnackbar({ variant: "error", message: "请求超时！请您稍后重试" });
+        if (error.message.indexOf("timeout") !== -1)
+          enqueueSnackbar({ variant: "error", message: "请求超时！请您稍后重试" });
         if (error.message.indexOf("Network Error") !== -1)
           enqueueSnackbar({ variant: "error", message: "网络错误！请您稍后重试" });
         if (response) checkStatus(response.status);
@@ -92,19 +93,34 @@ class RequestHttp {
   post<R>({ url, path, data, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
     const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
-    return this.service.post(serviceUrl, data, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
+    return this.service.post(serviceUrl, data, {
+      params,
+      showDialog,
+      loading,
+      cancel
+    } as CustomAxiosRequestConfig);
   }
 
   delete<R>({ url, path, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
     const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
-    return this.service.delete(serviceUrl, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
+    return this.service.delete(serviceUrl, {
+      params,
+      showDialog,
+      loading,
+      cancel
+    } as CustomAxiosRequestConfig);
   }
 
   put<R>({ url, path, data, params }: RequestConfig, config?: ExtendsAxiosRequestConfig): Promise<R> {
     const { showDialog, loading, cancel } = { showDialog: true, ...config };
     const serviceUrl = url || import.meta.env.VITE_SERVICE_URL + path;
-    return this.service.put(serviceUrl, data, { params, showDialog, loading, cancel } as CustomAxiosRequestConfig);
+    return this.service.put(serviceUrl, data, {
+      params,
+      showDialog,
+      loading,
+      cancel
+    } as CustomAxiosRequestConfig);
   }
 }
 

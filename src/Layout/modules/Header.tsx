@@ -16,22 +16,15 @@ interface Props {
   isMediaLg?: boolean;
 }
 
-const Header: React.FC<Props> = ({ menuMode, menuAsideStatus, isMediaLg }) => {
+const Header: React.FC<Props> = ({ menuMode, isMediaLg }) => {
   const drawerMenuRef = useRef<DrawerMenuRefs>(null);
 
   return (
     <>
       <AppBar
-        position="fixed"
+        position="sticky"
         color="transparent"
-        className={
-          "shadow-none backdrop-blur-[6px]" +
-          (menuMode === "vertical" && isMediaLg
-            ? menuAsideStatus === "default"
-              ? " w-[calc(100%-260px)]"
-              : " w-[calc(100%-68px)]"
-            : " w-full")
-        }
+        className={"w-full shadow-none backdrop-blur-[6px]"}
         sx={{ background: "rgb(var(--mui-palette-background-defaultChannel)/90%)" }}
       >
         <Toolbar disableGutters sx={{ px: isMediaLg ? "40px" : "20px" }}>

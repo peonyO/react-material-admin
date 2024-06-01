@@ -29,9 +29,15 @@ interface ChildrenMenuItemProps {
 }
 
 /** 子级 */
-const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem, isShowDot, hierarchy, pathname }) => {
+const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({
+  isSpread,
+  menuItem,
+  isShowDot,
+  hierarchy,
+  pathname
+}) => {
   const { icon, title, description, dirPath, children, isLink, tagInfo, pagePath } = menuItem;
-  const [isOpen, setIsOpen] = useState(pathname.includes(pagePath));
+  const [isOpen, setIsOpen] = useState(!!(pathname.includes(pagePath) && children && !!children.length));
   const customIcons: { [key: string]: any } = Icons;
 
   const currentHierarchy = hierarchy ? hierarchy + 1 : 1;
@@ -47,7 +53,10 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
 
   return (
     <li>
-      <Link to={children && !!children.length && !dirPath ? "#" : pagePath} target={isLink ? "_blank" : undefined}>
+      <Link
+        to={children && !!children.length && !dirPath ? "#" : pagePath}
+        target={isLink ? "_blank" : undefined}
+      >
         <ListItemButton
           selected={isSelected}
           sx={{
@@ -71,22 +80,26 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
                 color: isSelected ? "var(--mui-palette-primary-main)" : "var(--mui-palette-text-primary)"
               }}
             >
-              {createElement(customIcons[icon] as any, { style: { width: "24px" } })}
+              {customIcons[icon] && createElement(customIcons[icon] as any, { style: { width: "24px" } })}
             </ListItemIcon>
           ) : isShowDot ? (
             <ListItemIcon
               sx={{
                 pr: isSpread ? "16px" : "0",
                 minWidth: "40px",
+                height: "10px",
                 pt: "1px",
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
+                alignItems: "center"
               }}
             >
               <div
                 className={
-                  "rounded-full transition-all" +
-                  (isSelected ? " size-[8px] bg-[--mui-palette-primary-main]" : " size-[4px] bg-[--mui-palette-text-primary]")
+                  "rounded-full transition-all size-[4px]" +
+                  (isSelected
+                    ? " scale-[2] bg-[--mui-palette-primary-main]"
+                    : " bg-[--mui-palette-text-primary]")
                 }
               ></div>
             </ListItemIcon>
@@ -128,23 +141,33 @@ const ChildrenMenuItem: React.FC<ChildrenMenuItemProps> = ({ isSpread, menuItem,
               className: "line-clamp-1"
             }}
           />
-          {isSpread && tagInfo ? (
-            <Chip
-              color={tagInfo.color}
-              label={tagInfo.text}
-              icon={tagInfo.icon ? createElement(customIcons[tagInfo.icon] as any, { style: { fontSize: "16px" } }) : undefined}
-            ></Chip>
-          ) : (
-            <></>
-          )}
-          {/* 展开标识符 */}
-          {children && isSpread ? (
-            <ExpandMore className={"transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")} />
-          ) : (
-            <></>
-          )}
-          {/* 标识是否是外部链接 */}
-          {isLink && isSpread ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
+          <div className="flex items-center gap-[2px]">
+            {isSpread && tagInfo ? (
+              <Chip
+                color={tagInfo.color}
+                label={tagInfo.text}
+                icon={
+                  tagInfo.icon && customIcons[tagInfo.icon]
+                    ? createElement(customIcons[tagInfo.icon] as any, { style: { fontSize: "16px" } })
+                    : undefined
+                }
+              ></Chip>
+            ) : (
+              <></>
+            )}
+            {/* 展开标识符 */}
+            {children && isSpread ? (
+              <ExpandMore
+                className={
+                  "transition-transform duration-300" + (isOpen ? " rotate-[0deg]" : " rotate-[-90deg]")
+                }
+              />
+            ) : (
+              <></>
+            )}
+            {/* 标识是否是外部链接 */}
+            {isLink && isSpread ? <LaunchTwoToneIcon className="text-[16px]" /> : <></>}
+          </div>
         </ListItemButton>
       </Link>
       {children && !!children.length ? (
@@ -208,7 +231,9 @@ const MainMenuItem: React.FC<MainMenuItemProps> = ({ menuItem, pathname, isSprea
         <Collapse in={isOpen}>
           <List component="ul" disablePadding>
             {menuItem.children.map(item => {
-              return <ChildrenMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />;
+              return (
+                <ChildrenMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />
+              );
             })}
           </List>
         </Collapse>
@@ -230,7 +255,7 @@ const TreeView: React.FC<Props> = ({ isSpread }) => {
   const menuList: MenuItems[] = getShowMenuList(userInfo?.menuList || []);
 
   return (
-    <List sx={{ width: "100%", py: "0" }}>
+    <List sx={{ width: "100%", py: "0", height: "1000px" }}>
       {menuList.map(item => {
         return <MainMenuItem key={item.id} isSpread={isSpread} menuItem={item} pathname={pathname} />;
       })}

@@ -1,7 +1,7 @@
 {
-  "name": "vite-project",
+  "name": "peony_admin",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,7 +31,6 @@
     "react-hook-form": "^7.51.0",
     "react-router-dom": "^6.22.2",
     "react-use": "^17.5.0",
-    "simplebar-react": "^3.2.4",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -59,7 +58,6 @@
     "postcss-less": "^6.0.0",
     "prettier": "^3.2.5",
     "rollup-plugin-visualizer": "^5.12.0",
-    "simplebar-core": "^1.2.4",
     "stylelint": "^16.2.1",
     "stylelint-config-recess-order": "^5.0.0",
     "stylelint-config-standard": "^36.0.0",
@@ -75,5 +73,8 @@
     "commitizen": {
       "path": "node_modules/cz-git"
     }
+  },
+  "volta": {
+    "node": "20.12.2"
   }
 }
